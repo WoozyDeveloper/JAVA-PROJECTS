@@ -1,7 +1,6 @@
 
 public class Compulsory {
 	
-	//functie ce calculeaza suma cifrelor unui numar
 	private static int digitSum(int num)
 	{
 		int sum = 0;
@@ -17,14 +16,13 @@ public class Compulsory {
 		System.out.println("Hello World!");
 		String[] languages = {"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
 		
-		//generez numarul random n si realizez calculele
 		int n = (int) (Math.random() * 1_000_000);
+		
 		n*=3;
 		n+=Integer.parseInt("10101", 2);
 		n+=Integer.parseInt("FF", 16);
 		n*=6;
 		
-		//fac suma cifrelor sale pana devine de o cifra
 		while(n>9)
 			n = digitSum(n);
 		
