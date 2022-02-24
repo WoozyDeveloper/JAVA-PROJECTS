@@ -1,0 +1,17 @@
+
+import java.util.Objects;
+import java.util.Vector;
+
+public class Doctor extends Asistent{
+	private String specializare;
+	
+	
+	  public String getSpecializare() {
+		    return specializare;
+		  }
+
+		  public void setSpecializare(String specializare) {
+		    this.specializare = specializare;
+		  }
+  
+}

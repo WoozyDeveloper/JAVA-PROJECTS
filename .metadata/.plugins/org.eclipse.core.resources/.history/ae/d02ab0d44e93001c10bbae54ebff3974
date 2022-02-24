@@ -1,0 +1,21 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Word {
+	ArrayList<String> myNeighbours = new ArrayList<String>(Arrays.asList(""));
+	public int x = 2;
+	public float h = 3.14f;
+		
+	public void setNeighbourhood(int index, String[] words, boolean[][] matrix, int n)
+	{
+		for(int i = 0; i < n; i++)
+			if(matrix[index][i] == true)
+				myNeighbours.add(words[i]);
+				
+	}
+	public void printNeighbours(int index)
+	{
+		for(int i = 0; i < myNeighbours.length; i++)
+			System.out.print(myNeighbours.get(i) + " ");
+	}
+}

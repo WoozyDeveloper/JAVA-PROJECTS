@@ -1,0 +1,72 @@
+import java.util.Random;
+
+public class Homework {
+	
+//	private static int convertBoolean(boolean x)
+//	{
+//		return x == true? 1 : 0;
+//	}
+
+	private static boolean areNeighbours(String s1, String s2)
+	{
+		for(char c1 : s1.toCharArray())
+			for(char c2 : s2.toCharArray())
+				if(c1 == c2)
+					return true;
+		return false;
+	}
+	
+	public static void main(String[] args) {
+		
+		int startTime = (int) System.nanoTime();
+		//1
+		int n = Integer.parseInt(args[0]);
+		int p = Integer.parseInt(args[1]);
+		char[] c = new char[args.length - 2];
+		
+		int index = 0;
+		for(int i = 2; i < args.length; i++)
+			c[index++] = args[i].charAt(0);
+		
+		//2
+		String[] words = new String[n];
+		for(int i = 0; i < n; i++)
+		{
+			Random r = new Random();
+			int low = 0;
+			int high = c.length - 1;
+			int result = r.nextInt(high-low) + low;
+			words[i] = c[result] + "";
+			for(int j = 1; j < p; j++)
+			{
+				r = new Random();
+				low = 0;
+				high = c.length - 1;
+				result = r.nextInt(high-low) + low;
+				words[i] = words[i] + c[result];
+			}
+			System.out.println(words[i]);
+		}
+		
+		//3
+		boolean[][] adj = new boolean[n][n];
+		for(int i = 0; i < n; i++)
+			for(int j = 0; j < i; j++)
+				adj[i][j] = adj[j][i] = areNeighbours(words[i],words[j]);
+		int endTime = (int) System.nanoTime();
+		Neighbours[] wordNeighbours;
+		for(int i = 0; i < n; i++)
+			wordNeighbours[i].setNeighbourhood(i, words, adj, n);
+		for(int i = 0; i < n; i++)
+			wordNeighbours[i].printNeighbours(i, n);
+		System.out.println("Time: " + (endTime - startTime));
+//		for(i = 0; i < n; i++)
+//		{
+//			for(j = 0; j < n; j++)
+//				System.out.print(adj[i][j] + " ");
+//			System.out.println();
+//		}
+				
+	
+	}
+}

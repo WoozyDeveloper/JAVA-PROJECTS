@@ -1,0 +1,17 @@
+
+abstract class Om {
+  protected String nume, CNP;
+
+  public Om(String nume,String CNP){
+    this.nume = nume;
+    this.CNP = CNP;
+  }
+
+  public String getNume() {
+    return nume;
+  }
+
+  public void setNume(String nume) {
+    this.nume = nume;
+  }
+}

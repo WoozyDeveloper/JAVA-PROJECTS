@@ -1,0 +1,46 @@
+package com.ip;
+
+import java.util.Objects;
+import java.util.Vector;
+
+public class Doctor extends Om{
+  private String specializare;
+  private Vector<Pacient> pacienti;
+
+  public Doctor(String nume,String CNP,String specializare) {
+    super(nume,CNP);
+    this.specializare = specializare;
+    pacienti = new Vector<Pacient>();
+  }
+
+  public void addPacient(Pacient pacient){
+    pacienti.add(pacient);
+  }
+
+  public void removePacient(Pacient pacient){
+    for(Pacient p : pacienti){
+      if(p.CNP.equals(pacient.CNP)){
+        pacienti.remove(p);
+        return;
+      }
+    }
+  }
+
+  public void showDescriere(){
+    System.out.format("Doctorul %s (%s) - (",this.nume,this.specializare);
+    for (Pacient p : pacienti){
+      p.showDescriere();
+    }
+    System.out.print("\b\b)");
+    System.out.println();
+  }
+
+
+  public String getSpecializare() {
+    return specializare;
+  }
+
+  public void setSpecializare(String specializare) {
+    this.specializare = specializare;
+  }
+}

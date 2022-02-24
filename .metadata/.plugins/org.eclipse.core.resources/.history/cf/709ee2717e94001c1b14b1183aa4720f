@@ -1,0 +1,62 @@
+package com.ip;
+
+import javax.print.Doc;
+import java.util.Vector;
+
+public class Spital {
+  private String nume;
+  private Vector<Doctor> doctori;
+  private Vector<Pacient> pacienti;
+
+  public Spital(String nume){
+    this.nume = nume;
+    doctori = new Vector<Doctor>();
+    pacienti = new Vector<Pacient>();
+  }
+
+  public void addDoctor(Doctor d){
+    doctori.add(d);
+  }
+
+  public void addPacient(Pacient p, Doctor d){
+    pacienti.add(p);
+    for (Doctor doc : doctori){
+      if(d == doc){
+        d.addPacient(p);
+      }
+    }
+  }
+
+  public void showDoctorPacient(){
+    System.out.println("##########");
+    for (Doctor d : doctori){
+      d.showDescriere();
+      System.out.print(" - ");
+      for (Pacient p: d.getPacienti()){
+        p.showDescriere();
+      }
+      System.out.println();
+    }
+    System.out.println("##########");
+  }
+
+  public void showPacientDoctor(){
+    System.out.println("##########");
+
+    for (Pacient p : pacienti) {
+      p.showDescriere();
+      for (Doctor d : doctori){
+        for (Pacient pac : d.getPacienti()){
+          if(pac.CNP.equals(p.CNP)){
+            d.showDescriere();
+          }
+        }
+      System.out.print(" ");
+      }
+      System.out.println();
+    }
+
+    System.out.println("##########");
+  }
+
+}

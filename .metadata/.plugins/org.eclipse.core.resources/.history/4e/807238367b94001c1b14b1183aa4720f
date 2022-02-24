@@ -1,0 +1,8 @@
+
+import java.util.Objects;
+import java.util.Vector;
+
+public class Doctor extends Asistent{
+	private String specializare;
+  
+}

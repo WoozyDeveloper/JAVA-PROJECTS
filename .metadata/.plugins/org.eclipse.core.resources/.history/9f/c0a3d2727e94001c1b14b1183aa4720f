@@ -1,0 +1,9 @@
+package com.ip;
+
+public class Asistent extends Om {
+
+  public Asistent(String nume, String CNP) {
+    super(nume, CNP);
+  }
+
+}

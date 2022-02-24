@@ -1,0 +1,35 @@
+package com.ip;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+
+//        Ce se da:
+//        Intr-un spital avem mai multi doctori si mai multe asistente. Pentru fiecare doctor avem liste cu pacientii pe care acestia ii consulta si-i trateaza. Similar pentru asistente.
+//
+//            Ce se cere:
+//        1. Creati doi doctori si trei pacienti si inscrieti pacientii pe listele doctorilor.
+//        2. Pentru un pacient specificat precizati pe ce liste de doctori se afla si bolile de care acesta sufera.
+//
+//        Exemplu: Doctorul Popescu (ORL) (Pacientul Ionescu Ochi, Pacientul Vasilescu Nasul), Doctorul Georgescu (Inima) (Pacientul Ionescu Supertensiune, Pacientul Petrescu Subtensiune)
+
+        Doctor doctor1 = new Doctor("Popescu","1","ORL");
+        Doctor doctor2 = new Doctor("Georgescu","2","Inima");
+
+        Pacient pacient1 = new Pacient("Ionescu","3","Ochi");
+        Pacient pacient2 = new Pacient("Vasilescu","4","Nas");
+        Pacient pacient3 = new Pacient("Ionescu", "5","Super-Tensiune");
+
+        doctor1.addPacient(pacient1);
+        doctor1.addPacient(pacient2);
+        doctor2.addPacient(pacient3);
+
+//        doctor1.removePacient(pacient2);
+
+        doctor1.showDescriere();
+        doctor2.showDescriere();
+
+
+    }
+}
