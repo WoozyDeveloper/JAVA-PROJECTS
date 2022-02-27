@@ -33,6 +33,7 @@ public class Homework {
 		//acum in c avem alfabetul
 		
 		StringBuilder[] words = new StringBuilder[n];//aici vom avea cuvintele generate aleator
+		//generam n cuvinte noi aleator
 		for(int i = 0; i < n; i++)
 		{
 			words[i] = new StringBuilder();
@@ -50,13 +51,15 @@ public class Homework {
 				words[i].append(c[result]);
 			}
 		}
+		//afisam cuvintele salvate in array
 		for(int i=0;i<words.length;i++)
 			System.out.print(words[i]+" ");
+		//matricea ceruta
 		boolean[][] adj = new boolean[n][n];
 		for(int i=0;i<words.length;i++)
 			for(int j=0;j<words.length;j++)
 			{
-				if(areNeighbours(words[i],words[j]) == true)
+				if(areNeighbours(words[i],words[j]) == true)//daca 2 cuvinte sunt vecine punem pe [i][j] true
 				{
 					adj[i][j] = true;
 					//System.out.print("\nVecini " + words[i] + " cu " + words[j]);
@@ -65,20 +68,19 @@ public class Homework {
 					adj[i][j] = false;
 			}
 		System.out.println();
+		
+		//structura de date ce va retine pentru fiecare cuvant vecinii sai
 		Word[] wordDB = new Word[n];
 		for(int i = 0; i < n ; i++)
 		{
-			wordDB[i] = new Word();
-			wordDB[i].setNeighbourhood(i, words, adj, n);
+			wordDB[i] = new Word();//alocare
+			wordDB[i].setNeighbourhood(i, words, adj, n);//apelam functia din Word
 		}
 		for(int i = 0; i < n ; i++)
 		{
-			wordDB[i].printNeighbours(i,words);
+			wordDB[i].printNeighbours(i,words);//afisam vecinii cuvantului
 			System.out.println();
 		}
-		
-		
-		
 		
 		
 		//preiau in endTime timpul la care s-a terminat programul

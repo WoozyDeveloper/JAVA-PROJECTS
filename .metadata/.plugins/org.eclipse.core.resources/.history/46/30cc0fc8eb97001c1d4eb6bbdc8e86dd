@@ -2,15 +2,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Word {
-	ArrayList<StringBuilder> myNeighbours = new ArrayList<StringBuilder>();//aici salvam vecinii pentru fiecare cuvant in parte
+	ArrayList<StringBuilder> myNeighbours = new ArrayList<StringBuilder>();
 	private int dim = 0;
 		
 	public void setNeighbourhood(int index, StringBuilder[] words, boolean[][] matrix, int n)
 	{
 		for(int i = 0; i < n; i++)
-			if(matrix[index][i] == true && index != i)//daca words[index] e vecin cu words[i] si cuvantul e difert de el insusi
+			if(matrix[index][i] == true && index != i)
 			{
-				myNeighbours.add(words[i]);//adaugam cuvantul
+				myNeighbours.add(words[i]);
 				dim++;
 			}
 				
