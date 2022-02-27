@@ -1,0 +1,91 @@
+import java.util.Random;
+
+public class Homework {
+	
+//	private static int convertBoolean(boolean x)
+//	{
+//		return x == true? 1 : 0;
+//	}
+
+	//Functie ce verifica daca doua cuvinte sunt vecine
+	private static boolean areNeighbours(String s1, String s2)
+	{
+		for(int i=0; i < s1.length(); i++)
+			for(int j=0; j < s2.length(); j++)
+				if(s1.charAt(i) == s2.charAt(j))//daca gasim un caracter comun
+					return true;
+		return false;
+	}
+	
+	public static void main(String[] args) {
+		
+		//preiau in startTime timpul la care incepe programul
+		int startTime = (int) System.nanoTime();
+		int n = Integer.parseInt(args[0]);//luam primul parametru ce este chiar n
+		int p = Integer.parseInt(args[1]);//luam al doilea parametru, si anume p
+		char[] c = new char[args.length - 2];//in c se va afla alfabetul
+		
+		int index = 0;
+		//pornim de la 2 prin argumente deoarece in 0 avem n si in 1 pe p, alfabetul incepand de la 2 pana la args.length
+		for(int i = 2; i < args.length; i++) 
+			c[index++] = args[i].charAt(0);//am pus charAt(0) ca sa-l vada ca si caracter.
+		
+		//acum in c avem alfabetul
+		
+		String[] words = new String[n];//aici vom avea cuvintele
+		for(int i = 0; i < n; i++)
+		{
+			Random r = new Random();
+			int low = 0;
+			int high = c.length - 1;
+			int result = r.nextInt(high-low) + low;
+			words[i] = c[result] + "";
+			for(int j = 0; j < p; j++)
+			{
+				r = new Random();
+				low = 0;
+				high = c.length - 1;
+				result = r.nextInt(high-low) + low;
+				words[i] = words[i] + c[result];
+			}
+			System.out.println(words[i]);
+		}
+		
+		//3
+		//matricea de adiacenta pentru cuvinte
+		//adj[i][j] e true daca word[i] e vecinul lui word[j].
+		boolean[][] adj = new boolean[n][n];
+		for(int i = 0; i < n; i++)
+			for(int j = 0; j < n; j++)
+					adj[i][j] = areNeighbours(words[i],words[j]);
+		
+//		for(int i=0;i<n;i++)
+//		{
+//			System.out.print(words[i]+": ");
+//			for(int j=0;j<n;j++)
+//				System.out.print(adj[i][j]+" ");
+//			System.out.println();
+//		}
+//			
+		
+		Word word[] = new Word[20];
+		for(int i = 0; i < n; i++)
+		{
+			word[i] = new Word();
+			word[i].setNeighbourhood(i, words, adj, n);
+		}
+		
+		
+		for(int i = 0; i < n; i++)
+		{   
+			word[i].printNeighbours(index);
+			System.out.println();
+		}
+		
+		//preiau in endTime timpul la care s-a terminat programul
+		int endTime = (int) System.nanoTime();
+		//afisez timpul de rulare scazand endTime-startTime
+		System.out.println("Time: " + (endTime - startTime));
+	
+	}
+}

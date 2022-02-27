@@ -1,7 +1,0 @@
-
-public class Comp {
-	public static void main(String[] args) {
-		System.out.println("Hello World!\n");
-		String[] languages= new String[]{"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
-	}
-}

@@ -1,9 +1,0 @@
-
-public class Comp {
-	public static void main(String[] args) {
-		System.out.println("Hello World!\n");
-		String[] languages = {"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
-		int n = (int) (Math.random() * 1_000_000);
-		System.out.println(n);
-	}
-}
