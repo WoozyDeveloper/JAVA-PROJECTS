@@ -17,6 +17,7 @@ public class Homework {
 		return false;
 	}
 	
+	
 	public static void main(String[] args) {
 		
 		//preiau in startTime timpul la care incepe programul

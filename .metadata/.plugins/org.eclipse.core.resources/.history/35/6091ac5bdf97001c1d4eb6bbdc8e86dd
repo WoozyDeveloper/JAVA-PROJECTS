@@ -50,8 +50,7 @@ public class Homework {
 				words[i].append(c[result]);
 			}
 		}
-		for(int i=0;i<words.length;i++)
-			System.out.print(words[i]+" ");
+		
 		boolean[][] adj = new boolean[n][n];
 		for(int i=0;i<words.length;i++)
 			for(int j=0;j<words.length;j++)
@@ -79,6 +78,12 @@ public class Homework {
 		
 		
 		
+//		for(int i=0;i<words.length;i++)
+//		{
+//			for(int j=0;j<words.length;j++)
+//				System.out.print(adj[i][j]+" ");
+//			System.out.println();
+//		}
 		
 		
 		//preiau in endTime timpul la care s-a terminat programul
