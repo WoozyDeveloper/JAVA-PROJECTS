@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         Table myTable = new Table();
-        Move move = new Move(4);
+        Move move = new Move(3);
         boolean result = false;
         while(true)
         {
