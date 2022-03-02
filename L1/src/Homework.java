@@ -44,7 +44,7 @@ public class Homework {
 			words[i].append(c[result]);//punem un caracter
 			for(int j = 1; j < p; j++)//punem urmatoarele p-1 caractere
 			{
-				r = new Random();
+				r = new Random();//generam un nr random care va fi indexul din alfabel si luam litera de pe acea pozitie
 				low = 0;
 				high = c.length - 1;
 				result = r.nextInt(high-low) + low;
@@ -55,7 +55,7 @@ public class Homework {
 		for(int i=0;i<words.length;i++)
 			System.out.print(words[i]+" ");
 		//matricea ceruta
-		boolean[][] adj = new boolean[n][n];
+		boolean[][] adj = new boolean[n][n];//matricea ceruta in problema
 		for(int i=0;i<words.length;i++)
 			for(int j=0;j<words.length;j++)
 			{
