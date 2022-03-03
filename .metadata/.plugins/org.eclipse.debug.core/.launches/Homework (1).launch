@@ -12,6 +12,6 @@
     <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_CLASSPATH_ONLY_JAR" value="false"/>
     <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="Homework"/>
     <stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value="L1"/>
-    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="4 3 a b c d e"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="100 7 A C G T"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="L1"/>
 </launchConfiguration>

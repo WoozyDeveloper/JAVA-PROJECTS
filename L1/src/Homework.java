@@ -22,7 +22,7 @@ public class Homework {
 		//preiau in startTime timpul la care incepe programul
 		int startTime = (int) System.nanoTime();
 		int n = Integer.parseInt(args[0]);//luam primul parametru ce este chiar n
-		if(n < 0)
+		if(n <= 0)
 			System.exit(0);
 		int p = Integer.parseInt(args[1]);//luam al doilea parametru, si anume p
 		if(p <= 0)
@@ -52,7 +52,7 @@ public class Homework {
 			Random r = new Random();
 			int low = 0;
 			int high = c.length;
-			int result = r.nextInt(high-low) + low;//in result avem un numar random din intervalul [low,high].
+			int result = r.nextInt(high-low) + low;//in result avem un numar random din intervalul [low,high).
 			words[i].append(c[result]);//punem un caracter
 			for(int j = 1; j < p; j++)//punem urmatoarele p-1 caractere
 			{
