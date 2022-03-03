@@ -22,13 +22,25 @@ public class Homework {
 		//preiau in startTime timpul la care incepe programul
 		int startTime = (int) System.nanoTime();
 		int n = Integer.parseInt(args[0]);//luam primul parametru ce este chiar n
+		if(n < 0)
+			System.exit(0);
 		int p = Integer.parseInt(args[1]);//luam al doilea parametru, si anume p
+		if(p <= 0)
+			System.exit(0);
 		char[] c = new char[args.length - 2];//in c se va afla alfabetul
 		
 		int index = 0;
 		//pornim de la 2 prin argumente deoarece in 0 avem n si in 1 pe p, alfabetul incepand de la 2 pana la args.length
-		for(int i = 2; i < args.length; i++) 
+		for(int i = 2; i < args.length; i++)
+		{
+			if(args[i].length() > 1)
+				System.exit(0);
+			if(!Character.isLetter(args[i].charAt(0)))
+				System.exit(0);
+				
 			c[index++] = args[i].charAt(0);//am pus charAt(0) ca sa-l vada ca si caracter.
+			
+		}
 		
 		//acum in c avem alfabetul
 		
