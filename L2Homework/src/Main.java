@@ -57,7 +57,10 @@ public class Main {
 				{
 					for(Room r2 : rooms)
 					{
-						
+						if(r.getName().compareTo(r2.getName()) < 0)
+						{
+							
+						}
 					}
 				}
 			}
