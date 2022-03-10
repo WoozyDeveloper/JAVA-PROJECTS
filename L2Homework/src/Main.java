@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 
 public class Main {
 
@@ -29,15 +30,39 @@ public class Main {
 	//make the repartition for the events
 	public static void repartitions()
 	{
+		boolean passedEvents[] = new boolean[events.size()];
 		ArrayList<Event> usedEvents = new ArrayList<Event>();
 		for(Event e : events)
 		{
+			System.out.print(e.getName() + " -> ");
 			for(Room r : rooms)
 			{
-				
+				boolean usedRoom = false;
+				for(Event e2 : events)
+					if(e.getEnd_time() <= e2.getEnd_time() && e.getEnd_time() >= e2.getStart_time() && !e.equals(e2))
+					{
+						if(e.getEventSize() <= r.getCapacity())
+						{
+							usedRoom = true;
+							break;
+						}
+					}
+
+				if(usedRoom == false && !usedEvents.contains(e))
+				{
+					System.out.print(r.getName());
+					usedEvents.add(e);
+				}
+				if(usedRoom == true && !usedEvents.contains(e))
+				{
+					for(Room r2 : rooms)
+					{
+						
+					}
+				}
 			}
+			System.out.println();
 		}
-		
 	}
 	
 	public static void main(String[] args) {
@@ -61,14 +86,12 @@ public class Main {
 		addEvent(L1);addEvent(L1);
 		addEvent(L2);
 		addEvent(L3);
-		System.out.println("No. of events: " + events.size());
 		
 		//add all the rooms to our array that stores the rooms
 		addRoom(R401);addRoom(R401);
 		addRoom(R403);
 		addRoom(R405);
 		addRoom(R309);
-		System.out.println("No. of rooms: " + rooms.size());
 		
 		//print the available events
 		System.out.println("Events: " + C1 + ", " + C2 + ", " + L1 + ", " + L2 + ", " + L3);
@@ -77,12 +100,20 @@ public class Main {
 			@Override
 			public int compare(Event e1, Event e2)
 		    {
-		        if (e1.getEventSize() == e2.getEventSize())
+		        if (e1.getEnd_time() == e2.getEnd_time())
 		            return 0;
-		        else if (e1.getEventSize() < e2.getEventSize())
+		        else if (e1.getEnd_time() > e2.getEnd_time())
 		            return 1;
 		        else
 		            return -1;
+		    }
+		});
+		
+		Collections.sort(rooms, new Comparator<Room>() {
+			@Override
+			public int compare(Room r1, Room r2)
+		    {
+		        return r1.getName().compareTo(r2.getName());
 		    }
 		});
 		
