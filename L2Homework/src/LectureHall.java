@@ -22,6 +22,8 @@ public class LectureHall extends Room {
 		return name + "(cap=" + this.capacity + ", lecture hall)";
 	}
 
+	
+	//set/get methods for the projector
 	public boolean getProjector() {
 		return hasProjector;
 	}

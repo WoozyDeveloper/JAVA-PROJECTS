@@ -8,6 +8,7 @@ public class Main {
 	private static ArrayList<Room>  rooms  = new ArrayList<Room>();
 	
 	
+	//add an event to the ArrayList events
 	public static boolean addEvent(Event event)
 	{
 		if(!events.isEmpty() && events.contains(event))
@@ -16,6 +17,7 @@ public class Main {
 		return true;
 	}
 	
+	//add a room to the ArrayList rooms
 	public static boolean addRoom(Room room)
 	{
 		if(!rooms.isEmpty() && rooms.contains(room))
@@ -24,43 +26,18 @@ public class Main {
 		return true;
 	}
 	
+	//make the repartition for the events
 	public static void repartitions()
 	{
-		boolean passedEvents[] = new boolean[events.size()];
 		ArrayList<Event> usedEvents = new ArrayList<Event>();
 		for(Event e : events)
 		{
-			System.out.print(e.getName() + " -> ");
 			for(Room r : rooms)
 			{
-				boolean usedRoom = false;
-				for(Event e2 : events)
-					if(e.getEnd_time() <= e2.getEnd_time() && e.getEnd_time() >= e2.getStart_time() && !e.equals(e2))
-					{
-						if(e.getEventSize() <= r.getCapacity())
-						{
-							usedRoom = true;
-							break;
-						}
-					}
 				
-				if(usedRoom == false && !usedEvents.contains(e))
-				{
-					System.out.print(r.getName());
-					usedEvents.add(e);
-				}
-				if(usedRoom == true && !usedEvents.contains(e))
-				{
-					//System.out.print("ASDSAD");
-					for(Room r2 : rooms)
-					{
-						if(!r.equals(r2) && e.getEventSize() <= r2.getCapacity())
-							System.out.print(r2.getName());
-					}
-				}
 			}
-			System.out.println();
 		}
+		
 	}
 	
 	public static void main(String[] args) {
@@ -100,9 +77,9 @@ public class Main {
 			@Override
 			public int compare(Event e1, Event e2)
 		    {
-		        if (e1.getEnd_time() == e2.getEnd_time())
+		        if (e1.getEventSize() == e2.getEventSize())
 		            return 0;
-		        else if (e1.getEnd_time() > e2.getEnd_time())
+		        else if (e1.getEventSize() < e2.getEventSize())
 		            return 1;
 		        else
 		            return -1;

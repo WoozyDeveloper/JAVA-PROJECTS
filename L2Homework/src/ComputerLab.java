@@ -3,6 +3,7 @@ public class ComputerLab extends Room {
 
 	private String operatingSystemUsed;
 	
+	
 	public ComputerLab(String name,int capacity)
 	{
 		super(name, capacity);
@@ -21,6 +22,7 @@ public class ComputerLab extends Room {
 		return name + "(cap=" + this.capacity + ", lab)";
 	}
 
+	//set/get methods for the operating system
 	public String getOperatingSystem() {
 		return operatingSystemUsed;
 	}
