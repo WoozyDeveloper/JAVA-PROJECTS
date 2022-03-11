@@ -1,3 +1,6 @@
+/**
+ * @author Onofrei Adrian-Mihai 2E3
+ */
 import java.util.Comparator;
 
 public class EventComparator implements Comparator<Event>{

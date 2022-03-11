@@ -1,3 +1,6 @@
+/**
+ * @author Onofrei Adrian-Mihai 2E3
+ */
 import java.util.Objects;
 
 public abstract class Room {
@@ -5,7 +8,11 @@ public abstract class Room {
 	protected int capacity;// the capacity of the room
 	
 	
-	//contructor where we set the name,capacity and type of a room when we create a new one
+	/**
+	 * Constructor that sets the name and the capacity of the room
+	 * @param name name of the room
+	 * @param capacity size of the room
+	 */
 	public Room(String name, int capacity)
 	{
 		this.setName(name);
@@ -33,18 +40,32 @@ public abstract class Room {
 		return this.name + "(cap=" + this.capacity + ")";
 	}
 
-	//set/get methods for name
+	/**
+	 * Gets the name of the room
+	 * @return the name of the room
+	 */
 	public String getName() {
 		return name;
 	}
+	/**
+	 * Sets the name of the room
+	 * @param name the name of the room
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 	
-	//set/get methods for the capacity of the room
+	/**
+	 * Gets the capacity of the room
+	 * @return the capacity of the room
+	 */
 	public int getCapacity() {
 		return capacity;
 	}
+	/**
+	 * Sets the capacity of the room
+	 * @param capacity the size of the room
+	 */
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}

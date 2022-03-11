@@ -1,73 +1,13 @@
+/**This is the main class
+ * @author Onofrei Adrian-Mihai 2E3
+ */
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 
 public class Main {
-
-	private static ArrayList<Event> events = new ArrayList<Event>();
-	private static ArrayList<Room>  rooms  = new ArrayList<Room>();
-	
-	
-	//add an event to the ArrayList events
-	public static boolean addEvent(Event event)
-	{
-		if(!events.isEmpty() && events.contains(event))
-			return false;
-		events.add(event);
-		return true;
-	}
-	
-	//add a room to the ArrayList rooms
-	public static boolean addRoom(Room room)
-	{
-		if(!rooms.isEmpty() && rooms.contains(room))
-			return false;
-		rooms.add(room);
-		return true;
-	}
-	
-	//make the repartition for the events
-	public static void repartitions()
-	{
-		boolean passedEvents[] = new boolean[events.size()];
-		ArrayList<Event> usedEvents = new ArrayList<Event>();
-		for(Event e : events)
-		{
-			System.out.print(e.getName() + " -> ");
-			for(Room r : rooms)
-			{
-				boolean usedRoom = false;
-				for(Event e2 : events)
-					if(e.getEnd_time() <= e2.getEnd_time() && e.getEnd_time() >= e2.getStart_time() && !e.equals(e2))
-					{
-						if(e.getEventSize() <= r.getCapacity())
-						{
-							usedRoom = true;
-							break;
-						}
-					}
-
-				if(usedRoom == false && !usedEvents.contains(e))
-				{
-					System.out.print(r.getName());
-					usedEvents.add(e);
-				}
-				if(usedRoom == true && !usedEvents.contains(e))
-				{
-					for(Room r2 : rooms)
-					{
-						if(r.getName().compareTo(r2.getName()) < 0)
-						{
-							
-						}
-					}
-				}
-			}
-			System.out.println();
-		}
-	}
-	
 	public static void main(String[] args) {
 		
 		//events
@@ -83,48 +23,29 @@ public class Main {
 		Room R405 = new LectureHall("405", 30);
 		Room R309 = new ComputerLab("309",100);
 		
+		Activity activity = new Activity();
+		
 		//add all the events to our array that stores the events
-		addEvent(C1);addEvent(C1);
-		addEvent(C2);
-		addEvent(L1);addEvent(L1);
-		addEvent(L2);
-		addEvent(L3);
+		activity.addEvent(C1);activity.addEvent(C1);
+		activity.addEvent(C2);
+		activity.addEvent(L1);activity.addEvent(L1);
+		activity.addEvent(L2);
+		activity.addEvent(L3);
 		
 		//add all the rooms to our array that stores the rooms
-		addRoom(R401);addRoom(R401);
-		addRoom(R403);
-		addRoom(R405);
-		addRoom(R309);
+		activity.addRoom(R401);activity.addRoom(R401);
+		activity.addRoom(R403);
+		activity.addRoom(R405);
+		activity.addRoom(R309);
 		
 		//print the available events
 		System.out.println("Events: " + C1 + ", " + C2 + ", " + L1 + ", " + L2 + ", " + L3);
 		
-		Collections.sort(events, new Comparator<Event>() {
-			@Override
-			public int compare(Event e1, Event e2)
-		    {
-		        if (e1.getEnd_time() == e2.getEnd_time())
-		            return 0;
-		        else if (e1.getEnd_time() > e2.getEnd_time())
-		            return 1;
-		        else
-		            return -1;
-		    }
-		});
-		
-		Collections.sort(rooms, new Comparator<Room>() {
-			@Override
-			public int compare(Room r1, Room r2)
-		    {
-		        return r1.getName().compareTo(r2.getName());
-		    }
-		});
-		
 		//print the available rooms
 		System.out.println("Rooms: " + R401 + ", " + R403 + ", " + R405 + ", " + R309);
 
-		
-		repartitions();
+		Solution sol = new Solution(activity);
+		sol.repartitions();
 	}
 
 }
