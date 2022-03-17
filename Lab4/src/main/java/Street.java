@@ -1,13 +1,11 @@
 public class Street {
     private String name;
-    private int km;
     private int length;
-    private Intersection intersection1, intersection2;
+    private Intersection[] intersection = new Intersection[10];
 
-    public Street(Intersection i1, Intersection i2, int km){
-        this.intersection1 = i1;
-        this.intersection2 = i2;
-        this.km = km;
+    public Street(String name, int km){
+        this.name = name;
+        this.length = km;
     }
 
     public String getName() {

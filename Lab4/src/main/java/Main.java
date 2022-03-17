@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.stream.IntStream;
 
@@ -7,16 +8,20 @@ public class Main {
         LinkedList<Street> streetList = new LinkedList<Street>();
 
 
+        var streets = IntStream.rangeClosed(0,3)
+                .mapToObj(i->new Street("s" + i, 0))
+                .toArray(Street[]::new);
+        //streets[0].setLength(100);
+
         var nodes = IntStream.rangeClosed(0,3)
             .mapToObj(i->new Intersection("v" + i) )
             .toArray(Intersection[]::new);
+        streetList.addAll(Arrays.asList(streets));
 
-        final int dim = 3;
-        Street[] street = new Street[dim];
-        street[0] = new Street(nodes[0],nodes[1],10);
-        street[1] = new Street(nodes[1],nodes[2],20);
-        street[2] = new Street(nodes[2],nodes[0],30);
+        Collections.sort(streetList,
+                (u,v)->String.valueOf(u.getLength()).compareTo(String.valueOf(v.getLength())));
 
-        streetList.addAll(Arrays.asList())
+        for(Street s:streetList)
+            System.out.print(s.getName() + " ");
     }
 }
