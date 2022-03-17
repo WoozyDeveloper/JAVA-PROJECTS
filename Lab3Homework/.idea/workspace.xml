@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="aba300b3-c338-49f6-827a-5359df06b338" name="Changes" comment="" />
+    <list default="true" id="a284ec38-8c2a-43cf-aaa0-12593bb2642f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,18 +17,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="25kOytEIfdh12CurY0ix5F2VDys" />
+  <component name="ProjectId" id="26R9DrPHxngtIx4Zjn313HWDA3Z" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
@@ -91,11 +83,17 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/adionofrei/l3h" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\adiio\Desktop\JAVA PROJECTS\Lab3Homework\src\com\adionofrei\l3h" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="com.company.Main" />
-      <module name="Xsi0" />
+      <option name="MAIN_CLASS_NAME" value="com.adionofrei.l3h.Main" />
+      <module name="Lab3Homework" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
@@ -112,20 +110,16 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="aba300b3-c338-49f6-827a-5359df06b338" name="Changes" comment="" />
-      <created>1646067878578</created>
+      <changelist id="a284ec38-8c2a-43cf-aaa0-12593bb2642f" name="Changes" comment="" />
+      <created>1647375417654</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1646067878578</updated>
-      <workItem from="1646067879826" duration="12110000" />
-      <workItem from="1646088285897" duration="1215000" />
-      <workItem from="1646131457923" duration="3343000" />
-      <workItem from="1646160944847" duration="194000" />
-      <workItem from="1646316522071" duration="1193000" />
-      <workItem from="1646412925832" duration="862000" />
-      <workItem from="1647126700431" duration="6000" />
-      <workItem from="1647126807234" duration="16000" />
-      <workItem from="1647375168280" duration="236000" />
+      <updated>1647375417654</updated>
+      <workItem from="1647375418856" duration="775000" />
+      <workItem from="1647417467639" duration="8490000" />
+      <workItem from="1647433930645" duration="13753000" />
+      <workItem from="1647507714174" duration="5981000" />
+      <workItem from="1647518566452" duration="121000" />
     </task>
     <servers />
   </component>
