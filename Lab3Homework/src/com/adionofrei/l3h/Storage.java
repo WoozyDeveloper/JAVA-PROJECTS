@@ -9,14 +9,14 @@ public interface Storage {
 	int getStorageCapacity();
 
 	default int convertMB(){
-		return 1024 * this.getStorageCapacity();
+		return 1024 * getStorageCapacity();
 	}
 
 	default int convertKB(){
-		return 1024 * 1024 * this.getStorageCapacity();
+		return 1024 * 1024 * getStorageCapacity();
 	}
 
 	default int convertBYTE(){
-		return 1024 * 1024 * 1024 * this.getStorageCapacity();
+		return 1024 * 1024 * 1024 * getStorageCapacity();
 	}
 }
