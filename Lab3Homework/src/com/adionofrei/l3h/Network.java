@@ -62,7 +62,7 @@ public class Network {
 	public void printNetworkSortedByAdress(){
 		sortByAdress();
 		for(Node n : identifiableObject)
-			System.out.print(n.getName() + "-" + ((Identifiable)n).getAddress() + "\n");
+			System.out.print(n.getName() + "(" + n.getClass().getSimpleName() + ") -" + ((Identifiable)n).getAddress() + "\n");
 		System.out.println();
 	}
 
@@ -81,7 +81,7 @@ public class Network {
 		}
 	}
 
-	public void setIndexes(List<Node>nodes){
+	public void setIndexes(List<Node> nodes){
 		int ind = 0;
 		for(Node node : nodes){
 			node.setIndex(ind++);

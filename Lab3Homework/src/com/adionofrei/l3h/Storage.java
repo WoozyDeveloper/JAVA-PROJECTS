@@ -8,15 +8,15 @@ package com.adionofrei.l3h;
 public interface Storage {
 	int getStorageCapacity();
 
-	default int convertMB(int gb){
-		return 1024 * gb;
+	default int convertMB(){
+		return 1024 * this.getStorageCapacity();
 	}
 
-	default int convertKB(int gb){
-		return 1024 * 1024 * gb;
+	default int convertKB(){
+		return 1024 * 1024 * this.getStorageCapacity();
 	}
 
-	default int convertBYTE(int gb){
-		return 1024 * 1024 * 1024 * gb;
+	default int convertBYTE(){
+		return 1024 * 1024 * 1024 * this.getStorageCapacity();
 	}
 }

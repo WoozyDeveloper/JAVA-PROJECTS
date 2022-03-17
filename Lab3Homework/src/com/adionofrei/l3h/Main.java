@@ -11,6 +11,9 @@ public class Main {
 	public static void main(String[] args) {
 			List<Node> nodes = new ArrayList<Node>();
 
+			/**
+			 * Create the nodes and add them
+			 */
 			Node n1 = new Computer("1","1FF2232F13",20); nodes.add(n1);
 			Node n2 = new Router("2","1F1F1F");	         	 nodes.add(n2);
 			Node n3 = new Switch("3","11001BBB2");	     		 nodes.add(n3);
