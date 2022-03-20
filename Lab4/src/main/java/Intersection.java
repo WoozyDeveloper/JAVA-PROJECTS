@@ -6,6 +6,11 @@ import java.util.stream.IntStream;
 public class Intersection {
     private String name;
     private ArrayList<Street> street = new ArrayList<>();
+    private ArrayList<Intersection> to = new ArrayList<>();
+
+    public ArrayList<Street> getStreets() {
+        return street;
+    }
 
     public ArrayList<Street> GetStreets(){
         return street;
@@ -22,8 +27,10 @@ public class Intersection {
         this.name = faker.animal().name();
     }
 
-    public void AddStreet(Street s){
+    public void AddStreet(Street s, Intersection to){
         street.add(s);
+        this.to.add(to);
+        s.addNeighbourStreet(s);
         s.addNeighbourStreet(s);
     }
 
