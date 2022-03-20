@@ -1,13 +1,13 @@
 import java.util.*;
 
 public class City {
-    Map<Intersection,List<Street>> cityMap = new HashMap<>();
-    List<Street> street;
-    List<Intersection> intersection;
+    private Map<Intersection,List<Street>> cityMap = new HashMap<>();
+    private List<Street> street;
+    private static List<Intersection> intersection;
     int[][] matrix;
 
-    public int getNumberOfIntersections(){
-        return this.intersection.size();
+    public static int getNumberOfIntersections(){
+        return intersection.size();
     }
 
     public City(List<Street> str, List<Intersection> inter){
