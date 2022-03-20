@@ -7,29 +7,72 @@ public class Main {
         LinkedList<Street> streetList = new LinkedList<>();
         HashSet<Intersection> intersectionSet = new HashSet<>();
 
-        var streets = IntStream.rangeClosed(0,3)
-                .mapToObj(i->new Street("s" + i, 0))
+
+        /**
+         * Generate streets
+         */
+        var street = IntStream.rangeClosed(0,3)
+                .mapToObj(i->new Street(i,4))
                 .toArray(Street[]::new);
-        //streets[0].setLength(100);
 
-        var nodes = IntStream.rangeClosed(0,3)
-            .mapToObj(i->new Intersection("v" + i) )
+        /**
+         * Generate intersections
+         */
+        var intersection = IntStream.rangeClosed(0,3)
+            .mapToObj(i->new Intersection() )
             .toArray(Intersection[]::new);
-        streetList.addAll(Arrays.asList(streets));
 
+        streetList.addAll(Arrays.asList(street));
+
+        //region
+        intersection[0].AddStreet(street[1]);
+        intersection[0].AddStreet(street[2]);
+        intersection[0].AddStreet(street[3]);
+        intersection[0].AddStreet(street[0]);
+
+        intersection[1].AddStreet(street[0]);
+        intersection[1].AddStreet(street[2]);
+
+        intersection[2].AddStreet(street[0]);
+        intersection[2].AddStreet(street[1]);
+
+        intersection[3].AddStreet(street[0]);
+        //endregion
+
+        /**
+         * Sort streets by their length
+         */
         Collections.sort(streetList,
                 Comparator.comparing(u -> String.valueOf(u.getLength())));
 
-//        for(Street s:streetList)
-//            System.out.print(s.getName() + " ");
+        /**
+         * add the streets in a set
+         */
+        intersectionSet.addAll(Arrays.asList(intersection));
 
-        intersectionSet.addAll(Arrays.asList(nodes));
-
+        /**
+         * check for duplicates(even if it's not posible)
+         */
         intersectionSet.stream()
                 .distinct()
                 .collect(Collectors.toList());
 
+        System.out.print("Intersections: ");
         for(Intersection i : intersectionSet)
-            System.out.print(i.getName() + " ");
+            System.out.print(i.getName() + ", ");
+
+        //streets[1].setLength(1);
+        System.out.println();
+
+        /**
+         * create a city with streets and intersections
+         */
+        City city = new City(List.of(street), List.of(intersection));
+
+        /**
+         * display the streets longer than the value and with at least 3 other neighbour streets
+         */
+        city.displayLongerStreets(3);
+        city.printMatrix();
     }
 }

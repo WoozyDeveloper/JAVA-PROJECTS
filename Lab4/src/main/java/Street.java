@@ -1,10 +1,34 @@
+import com.github.javafaker.Faker;
+
+import java.util.ArrayList;
+
 public class Street {
     private String name;
+    private int index;
     private int length;
-    private Intersection[] intersection = new Intersection[10];
+    private ArrayList<Intersection> intersection = new ArrayList<>();
+    private ArrayList<Street> neighbourStreet = new ArrayList<>();
 
-    public Street(String name, int km){
-        this.name = name;
+    public int getIndex(){
+        return this.index;
+    }
+
+    public ArrayList<Street> getNeighbours(){
+        return neighbourStreet;
+    }
+
+    public int getNumberOfNeighbourStreets(){
+        return neighbourStreet.size();
+    }
+
+    public void addNeighbourStreet(Street s){
+        neighbourStreet.add(s);
+    }
+
+    public Street(int index, int km){
+        Faker faker =  new Faker();
+        this.index = index;
+        this.name = faker.address().streetName();
         this.length = km;
     }
 
