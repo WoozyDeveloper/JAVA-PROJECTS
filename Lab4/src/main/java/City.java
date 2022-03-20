@@ -13,13 +13,15 @@ public class City {
         matrix = new int[inter.size()][inter.size()];
         buildMatrix();
         printMatrix();
+        MST t = new MST();
+        t.primMST(matrix);
     }
 
     public Street findStreet(Intersection from, Intersection to){
         for(Street s : street){
             if((s.getFrom() == from && s.getTo() == to)
                 || (s.getFrom() == to && s.getTo() == from)) {
-                System.out.println("Am returnat " + s.getLength());
+                //System.out.println("Am returnat " + s.getLength());
                 return s;
             }
         }
