@@ -6,7 +6,16 @@ public class Street {
     private int index;
     private String name;
     private int length;
+    Intersection from,to;
     private ArrayList<Street> neighbourStreet = new ArrayList<>();
+
+    public Intersection getFrom(){
+        return this.from;
+    }
+
+    public Intersection getTo(){
+        return this.to;
+    }
 
     public void setIndex(int index){
         this.index = index;
@@ -42,7 +51,9 @@ public class Street {
         return length;
     }
 
-    public void setLength(int length) {
+    public void setLength(int length, Intersection from, Intersection to) {
+        this.from = from;
+        this.to=to;
         this.length = length;
     }
 }

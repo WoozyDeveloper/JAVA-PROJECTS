@@ -12,38 +12,45 @@ public class Main {
          * Generate streets
          */
         var street = IntStream.rangeClosed(0,15)
-                .mapToObj(i->new Street(4))
+                .mapToObj(i->new Street(0))
                 .toArray(Street[]::new);
-        //region length of streets
-        street[0].setLength(2);
-        street[1].setLength(2);
-        street[2].setLength(2);
-        street[3].setLength(2);
-        street[4].setLength(1);
-        street[5].setLength(3);
-        street[6].setLength(2);
-        street[7].setLength(2);
-        street[8].setLength(3);
-        street[9].setLength(1);
-        street[10].setLength(1);
-        street[11].setLength(2);
-        street[12].setLength(1);
-        street[13].setLength(1);
-        street[14].setLength(3);
-        street[15].setLength(1);
-        //endregion
-
 
 
         for(int i=0;i<street.length;i++)
             street[i].setIndex(i);
 
+        int index = 0;
         /**
          * Generate intersections
          */
         var intersection = IntStream.rangeClosed(0,8)
             .mapToObj(i->new Intersection() )
             .toArray(Intersection[]::new);
+
+        for(Intersection i : intersection)
+            i.setIndex(index++);
+
+        for(Intersection i : intersection)
+            System.out.print("Index " + i.getIndex());
+
+        //region length of streets
+        street[0].setLength(2,intersection[0],intersection[1]);
+        street[1].setLength(2,intersection[0],intersection[2]);
+        street[2].setLength(2,intersection[0],intersection[3]);
+        street[3].setLength(2,intersection[1],intersection[2]);
+        street[4].setLength(1,intersection[2],intersection[3]);
+        street[5].setLength(3,intersection[1],intersection[4]);
+        street[6].setLength(2,intersection[2],intersection[6]);
+        street[7].setLength(2,intersection[2],intersection[5]);
+        street[8].setLength(3,intersection[3],intersection[5]);
+        street[9].setLength(1,intersection[4],intersection[5]);
+        street[10].setLength(1,intersection[4],intersection[7]);
+        street[11].setLength(2,intersection[4],intersection[8]);
+        street[12].setLength(1,intersection[6],intersection[7]);
+        street[13].setLength(1,intersection[6],intersection[8]);
+        street[14].setLength(3,intersection[5],intersection[8]);
+        street[15].setLength(1,intersection[7],intersection[8]);
+        //endregion
 
         streetList.addAll(Arrays.asList(street));
 
@@ -94,8 +101,8 @@ public class Main {
         /**
          * Sort streets by their length
          */
-        Collections.sort(streetList,
-                Comparator.comparing(u -> String.valueOf(u.getLength())));
+//        Collections.sort(streetList,
+//                Comparator.comparing(u -> String.valueOf(u.getLength())));
 
         /**
          * add the streets in a set
@@ -103,7 +110,7 @@ public class Main {
         intersectionSet.addAll(Arrays.asList(intersection));
 
         /**
-         * check for duplicates(even if it's not posible)
+         * check for duplicates(even if it's not possible)
          */
         intersectionSet.stream()
                 .distinct()
@@ -125,6 +132,8 @@ public class Main {
          * display the streets longer than the value and with at least 3 other neighbour streets
          */
         city.displayLongerStreets(2);
-
+        System.out.println();
+//        for(Street s : street)
+//            System.out.print("dim= " + s.getLength() + ", ");
     }
 }

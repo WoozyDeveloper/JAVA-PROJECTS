@@ -4,12 +4,21 @@ import java.util.ArrayList;
 import java.util.stream.IntStream;
 
 public class Intersection {
+    private int index;
     private String name;
     private ArrayList<Street> street = new ArrayList<>();
     private ArrayList<Intersection> to = new ArrayList<>();
 
-    public ArrayList<Street> getStreets() {
-        return street;
+    public void setIndex(int index){
+        this.index = index;
+    }
+
+    public int getIndex(){
+        return this.index;
+    }
+
+    public ArrayList<Intersection> getOtherIntersections() {
+        return to;
     }
 
     public ArrayList<Street> GetStreets(){
