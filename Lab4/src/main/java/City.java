@@ -6,6 +6,10 @@ public class City {
     List<Intersection> intersection;
     int[][] matrix;
 
+    public int getNumberOfIntersections(){
+        return this.intersection.size();
+    }
+
     public City(List<Street> str, List<Intersection> inter){
         this.street = str;
         this.intersection = inter;

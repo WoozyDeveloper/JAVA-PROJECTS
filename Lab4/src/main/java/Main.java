@@ -101,8 +101,8 @@ public class Main {
         /**
          * Sort streets by their length
          */
-//        Collections.sort(streetList,
-//                Comparator.comparing(u -> String.valueOf(u.getLength())));
+        Collections.sort(streetList,
+                Comparator.comparing(u -> String.valueOf(u.getLength())));
 
         /**
          * add the streets in a set
@@ -112,9 +112,9 @@ public class Main {
         /**
          * check for duplicates(even if it's not possible)
          */
-        intersectionSet.stream()
-                .distinct()
-                .collect(Collectors.toList());
+//        intersectionSet.stream()
+//                .distinct()
+//                .collect(Collectors.toList());
 
         System.out.print("Intersections: ");
         for(Intersection i : intersectionSet)

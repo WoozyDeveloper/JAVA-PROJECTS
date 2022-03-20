@@ -1,6 +1,6 @@
 public class MST {
     // Number of vertices in the graph
-    private static final int V = 5;
+    private static final int V = 9;
 
     // A utility function to find the vertex with minimum key
     // value, from the set of vertices not yet included in MST
