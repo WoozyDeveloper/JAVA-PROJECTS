@@ -25,6 +25,12 @@ public class MST {
         System.out.println("Edge \tWeight");
         for (int i = 1; i < V; i++)
             System.out.println(parent[i] + " - " + i + "\t" + graph[i][parent[i]]);
+
+        int sum = 0;
+        for(int i = 1; i < V; i++)
+            sum+=graph[i][parent[i]];
+        System.out.println();
+        System.out.print("Total cost of MST: " + sum + "\n");
     }
 
     // Function to construct and print MST for a graph represented

@@ -30,8 +30,8 @@ public class Main {
         for(Intersection i : intersection)
             i.setIndex(index++);
 
-        for(Intersection i : intersection)
-            System.out.print("Index " + i.getIndex());
+//        for(Intersection i : intersection)
+//            System.out.print("Index " + i.getIndex());
 
         //region length of streets
         street[0].setLength(2,intersection[0],intersection[1]);
@@ -135,7 +135,5 @@ public class Main {
         System.out.println();
 //        for(Street s : street)
 //            System.out.print("dim= " + s.getLength() + ", ");
-
-
     }
 }

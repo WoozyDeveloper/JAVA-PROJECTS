@@ -52,7 +52,7 @@ public class City {
     public void displayLongerStreets(int value){
         street.stream()
                 .filter(str -> str.getLength() > value)
-                .filter(str -> str.getNumberOfNeighbourStreets() >= 3+1)// +1 pt ca se afla si ea insasi
+                .filter(str -> str.getNumberOfNeighbourStreets() >= 4)
                 .forEach(str -> System.out.print("str. " + str.getName() + ", "));
         System.out.println();
     }
