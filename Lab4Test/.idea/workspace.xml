@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7a870aa-4589-4feb-a19a-936fa38cc5ba" name="Changes" comment="" />
+    <list default="true" id="744cf517-051d-4679-9003-63a672be615e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,13 +20,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
-  </component>
-  <component name="ProjectId" id="26W6CXNOXuE753IXismLEFExzpq" />
+  <component name="ProjectId" id="26nNnVBBsXyEn4P2R1jpyZJIfHO" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -36,15 +41,19 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\adiio\Desktop\JAVA PROJECTS\Lab4Test\src\main\java" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Lab4" />
+      <module name="Lab4Test" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -58,20 +67,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e7a870aa-4589-4feb-a19a-936fa38cc5ba" name="Changes" comment="" />
-      <created>1647526870858</created>
+      <changelist id="744cf517-051d-4679-9003-63a672be615e" name="Changes" comment="" />
+      <created>1648055559196</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1647526870858</updated>
-      <workItem from="1647526872076" duration="3758000" />
-      <workItem from="1647530828787" duration="136000" />
-      <workItem from="1647535395955" duration="5551000" />
-      <workItem from="1647775873012" duration="27172000" />
-      <workItem from="1647895792207" duration="1229000" />
-      <workItem from="1648050348060" duration="2052000" />
-      <workItem from="1648055526751" duration="31000" />
-      <workItem from="1648056106812" duration="5364000" />
-      <workItem from="1648072914043" duration="1254000" />
+      <updated>1648055559196</updated>
+      <workItem from="1648055560318" duration="539000" />
     </task>
     <servers />
   </component>

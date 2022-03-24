@@ -112,9 +112,9 @@ public class Main {
         /**
          * check for duplicates(even if it's not possible)
          */
-//        intersectionSet.stream()
-//                .distinct()
-//                .collect(Collectors.toList());
+        intersectionSet.stream()
+                .distinct()
+                .collect(Collectors.toList());
 
         System.out.print("Intersections: ");
         for(Intersection i : intersectionSet)
