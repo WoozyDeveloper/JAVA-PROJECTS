@@ -2,7 +2,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class Item implements Serializable{
+public abstract class Item implements Serializable{
     private String id;
     private String title;
     private String location; //file name or Web page
