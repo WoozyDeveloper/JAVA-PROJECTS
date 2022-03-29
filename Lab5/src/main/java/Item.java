@@ -38,7 +38,8 @@ public abstract class Item implements Serializable{
         return "{id='" + id + '\'' +
                 ", title='" + title + '\'' +
                 ", location='" + location + '\'' +
-                ", author=" + author +
+                ", author=" + author + '\'' +
+                ", type=" + getClass().getSimpleName() + '\'' +
                 '}';
     }
 

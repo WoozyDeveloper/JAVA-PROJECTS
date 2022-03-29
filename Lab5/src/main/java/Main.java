@@ -6,7 +6,7 @@ public class Main {
         Book i1 = new Book("1","ABC","https://","Gigel");
         c.add(i1);
 
-        Book i2 = new Book("2","B","d:/","Altcineva");
+        Notebook i2 = new Notebook("2","B","d:/","Altcineva");
         c.add(i2);
 
         Book i3 = new Book("3","CCC","aici","Cineva");
