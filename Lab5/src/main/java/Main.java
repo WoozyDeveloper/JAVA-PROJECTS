@@ -2,6 +2,17 @@
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        Catalog c = new Catalog();
+        Book i1 = new Book("1","ABC","https://","Gigel");
+        c.add(i1);
+
+        Book i2 = new Book("2","B","d:/","Altcineva");
+        c.add(i2);
+
+        Book i3 = new Book("3","CCC","aici","Cineva");
+        c.add(i3);
+
+        System.out.print(c);
+
     }
 }

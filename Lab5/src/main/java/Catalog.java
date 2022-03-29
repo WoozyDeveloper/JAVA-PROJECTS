@@ -1,4 +1,7 @@
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +13,25 @@ public class Catalog implements Serializable{
     //…
     public void add(Item item) {
         items.add(item);
+    }
+
+    public void save(){
+        try{
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.writeValue(Paths.get("catalog.json").toFile(),this);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            System.out.println("Eroare la salvare. . .");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Catalog{" +
+                "name='" + name + '\'' +
+                ", items=" + items +
+                '}';
     }
 
     public Item findById(String id) {

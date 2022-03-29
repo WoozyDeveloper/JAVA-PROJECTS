@@ -48,6 +48,20 @@
       <recent name="C:\Users\adiio\Desktop\JAVA PROJECTS\Lab5\src\main\java" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Lab5" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -58,7 +72,9 @@
       <updated>1648132566953</updated>
       <workItem from="1648132568106" duration="1917000" />
       <workItem from="1648135607497" duration="686000" />
-      <workItem from="1648244862095" duration="752000" />
+      <workItem from="1648244862095" duration="1549000" />
+      <workItem from="1648401890637" duration="58000" />
+      <workItem from="1648580224835" duration="2152000" />
     </task>
     <servers />
   </component>

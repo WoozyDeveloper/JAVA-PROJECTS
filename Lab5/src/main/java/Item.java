@@ -6,9 +6,16 @@ public abstract class Item implements Serializable{
     private String id;
     private String title;
     private String location; //file name or Web page
-
+    private String author;
     private Map<String, Object> tags = new HashMap<>();
     //…
+
+    public Item(String id,String title, String location, String author){
+        this.id=id;
+        this.title=title;
+        this.location=location;
+        this.author=author;
+    }
 
     public String getId() {
         return id;
@@ -24,6 +31,15 @@ public abstract class Item implements Serializable{
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return "{id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", location='" + location + '\'' +
+                ", author=" + author +
+                '}';
     }
 
     public String getLocation() {

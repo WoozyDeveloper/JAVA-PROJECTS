@@ -1,5 +1,6 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -21,6 +22,9 @@ public class CatalogUtil {
                 Catalog.class);
         return catalog;
     }
-
+    public static void view(Item item) {
+        Desktop desktop = Desktop.getDesktop();
+        //… browse or open, depending of the location type
+    }
 
 }
