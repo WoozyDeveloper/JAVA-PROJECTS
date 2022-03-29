@@ -32,9 +32,9 @@ public class Catalog implements Serializable{
     @Override
     public String toString() {
         return "Catalog{" +
-                "name='" + name + '\'' +
+                "name='" + name + '\n' +
                 ", items=" + items +
-                '}';
+                "}";
     }
 
     public Item findById(String id) {

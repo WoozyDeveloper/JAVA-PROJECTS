@@ -47,7 +47,7 @@ public abstract class Item implements Serializable{
                 ", location='" + getLocation() + '\'' +
                 ", author=" + getAuthor() + '\'' +
                 ", type=" + getClass().getSimpleName() + '\'' +
-                '}';
+                "}\n";
     }
 
     public String getLocation() {
