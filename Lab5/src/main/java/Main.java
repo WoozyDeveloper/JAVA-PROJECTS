@@ -11,7 +11,7 @@ public class Main {
 
         Book i3 = new Book("3","CCC","aici","Cineva");
         c.add(i3);
-
+        c.save();
         System.out.print(c);
 
     }

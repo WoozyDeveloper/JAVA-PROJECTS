@@ -1,4 +1,6 @@
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.nio.file.Paths;
@@ -18,6 +20,7 @@ public class Catalog implements Serializable{
     public void save(){
         try{
             ObjectMapper mapper = new ObjectMapper();
+            mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
             mapper.writeValue(Paths.get("catalog.json").toFile(),this);
         }
         catch (Exception e){

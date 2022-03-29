@@ -8,7 +8,14 @@ public abstract class Item implements Serializable{
     private String location; //file name or Web page
     private String author;
     private Map<String, Object> tags = new HashMap<>();
-    //…
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
     public Item(String id,String title, String location, String author){
         this.id=id;
@@ -35,10 +42,10 @@ public abstract class Item implements Serializable{
 
     @Override
     public String toString() {
-        return "{id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", location='" + location + '\'' +
-                ", author=" + author + '\'' +
+        return "{id='" + getId() + '\'' +
+                ", title='" + getTitle() + '\'' +
+                ", location='" + getLocation() + '\'' +
+                ", author=" + getAuthor() + '\'' +
                 ", type=" + getClass().getSimpleName() + '\'' +
                 '}';
     }
