@@ -9,6 +9,8 @@ public class Main {
         ListCommand listCommand = new ListCommand();
         ReportCommand reportCommand = new ReportCommand();
         ViewCommand viewCommand = new ViewCommand();
+        SaveCommand saveCommand = new SaveCommand();
+        LoadCommand loadCommand = new LoadCommand();
 
         Catalog c = new Catalog();
         Book i1 = new Book("1","ABC","https://","Gigel");
@@ -20,9 +22,6 @@ public class Main {
         Book i3 = new Book("3","CCC","aici","Cineva");
         addCommand.execute(c,i3);
         c.save();
-
-
-        ReportCommand r = new ReportCommand();
-        r.execute(c);
+        reportCommand.execute(c);
     }
 }
