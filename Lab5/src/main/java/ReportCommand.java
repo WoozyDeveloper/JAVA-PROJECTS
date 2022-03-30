@@ -51,6 +51,4 @@ public class ReportCommand implements Command{
             System.out.println("Error at Desktop()");
         }
     }
-
-
 }

@@ -1,6 +1,7 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class SaveCommand implements Command{
@@ -11,9 +12,9 @@ public class SaveCommand implements Command{
             objectMapper.writeValue(
                     new File(path),
                     catalog);
-        }catch (IOException e)
-        {
-            System.out.print("Invalid input on save()!!!");
+        }catch(FileNotFoundException fnfe) {
+            System.out.println("No permission");
+            fnfe.printStackTrace();
         }
     }
 }
