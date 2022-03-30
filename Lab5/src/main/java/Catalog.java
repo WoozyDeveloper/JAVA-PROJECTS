@@ -12,10 +12,7 @@ public class Catalog implements Serializable{
     private String name;
     private List<Item> items = new ArrayList<>();
 
-    //…
-    public void add(Item item) {
-        items.add(item);
-    }
+    public List<Item> getItems(){return this.items;}
 
     public void save(){
         try{

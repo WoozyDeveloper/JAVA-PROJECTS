@@ -1,18 +1,28 @@
+import freemarker.template.TemplateException;
+
+import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws TemplateException, IOException {
+        AddCommand addCommand = new AddCommand();
+        ListCommand listCommand = new ListCommand();
+        ReportCommand reportCommand = new ReportCommand();
+        ViewCommand viewCommand = new ViewCommand();
+
         Catalog c = new Catalog();
         Book i1 = new Book("1","ABC","https://","Gigel");
-        c.add(i1);
+        addCommand.execute(c,i1);
 
         Notebook i2 = new Notebook("2","B","d:/","Altcineva");
-        c.add(i2);
+        addCommand.execute(c,i2);
 
         Book i3 = new Book("3","CCC","aici","Cineva");
-        c.add(i3);
+        addCommand.execute(c,i3);
         c.save();
-        System.out.print(c);
 
+
+        ReportCommand r = new ReportCommand();
+        r.execute(c);
     }
 }
