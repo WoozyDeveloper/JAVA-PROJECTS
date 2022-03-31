@@ -14,18 +14,6 @@ public class Catalog implements Serializable{
 
     public List<Item> getItems(){return this.items;}
 
-    public void save(){
-        try{
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
-            mapper.writeValue(Paths.get("catalog.json").toFile(),this);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            System.out.println("Eroare la salvare. . .");
-        }
-    }
-
     @Override
     public String toString() {
         return "Catalog{" +
