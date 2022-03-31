@@ -27,6 +27,6 @@ public class Main {
         //saveCommand.execute(c,"C:\\Users\\adiio\\Desktop");
         reportCommand.execute(c);
         System.out.println("METAAAA");
-        infoCommand.execute(c);
+        infoCommand.execute(i2);
     }
 }

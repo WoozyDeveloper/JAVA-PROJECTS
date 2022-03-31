@@ -39,7 +39,7 @@ public class InfoCommand {
         return metadata;
     }
 
-    public void execute(Catalog c) throws TikaException, IOException, SAXException {
+    public void execute(Item c) throws TikaException, IOException, SAXException {
         //detecting the file type
         BodyContentHandler handler = new BodyContentHandler();
         Metadata metadata = new Metadata();
