@@ -20,13 +20,37 @@ public class Main {
 
         Catalog c = new Catalog();
         Book i1 = new Book("1","ABC","https://","Gigel");
-        addCommand.execute(c,i1);
+        try {
+            addCommand.execute(c, i1);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
 
         Notebook i2 = new Notebook("2","B","d:/","Altcineva");
-        addCommand.execute(c,i2);
+        try {
+            addCommand.execute(c, i2);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
 
         Book i3 = new Book("3","CCC","aici","Cineva");
-        addCommand.execute(c,i3);
+        try {
+            addCommand.execute(c, i3);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        try {
+            addCommand.execute(c, i3);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        try {
+            listCommand.execute(c);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         saveCommand.execute(c,"C:\\Users\\adiio\\Desktop");
         reportCommand.execute(c);
         System.out.println("METAAAA");
