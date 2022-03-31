@@ -60,7 +60,7 @@
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+      <option name="MAIN_CLASS_NAME" value="Tema.Main" />
       <module name="Lab5" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -90,7 +90,8 @@
       <workItem from="1648711171667" duration="1019000" />
       <workItem from="1648713387475" duration="1225000" />
       <workItem from="1648717815541" duration="431000" />
-      <workItem from="1648731473275" duration="495000" />
+      <workItem from="1648731473275" duration="947000" />
+      <workItem from="1648732738971" duration="252000" />
     </task>
     <servers />
   </component>
