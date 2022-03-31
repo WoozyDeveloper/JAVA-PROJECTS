@@ -11,11 +11,6 @@ public class Main {
 
     public static void main(String[] args) throws TemplateException, IOException, TikaException, SAXException {
         Catalog c = new Catalog();
-//        ListCommand listCommand = new ListCommand();
-//        ViewCommand viewCommand = new ViewCommand();
-//
-//        LoadCommand loadCommand = new LoadCommand();
-//        InfoCommand infoCommand = new InfoCommand();
         Book i1 = new Book("1","ABC","https://","Gigel");
         try {
             AddCommand addCommand = new AddCommand(c,i1);
@@ -58,6 +53,7 @@ public class Main {
         ReportCommand reportCommand = new ReportCommand(c);
         reportCommand.execute();
         System.out.println("METAAAA");
+
         InfoCommand infoCommand = new InfoCommand(i2);
         infoCommand.execute();
     }
