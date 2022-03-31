@@ -1,3 +1,6 @@
+package Commands;
+
+import Tema.Item;
 import org.apache.tika.Tika;
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.io.TikaInputStream;

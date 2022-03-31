@@ -1,9 +1,13 @@
+package Commands;
+
+import Tema.Catalog;
+import Tema.Command;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
 
-public class LoadCommand implements Command{
+public class LoadCommand implements Command {
         public static void execute(Catalog catalog, String path)
             throws IOException {
         try {

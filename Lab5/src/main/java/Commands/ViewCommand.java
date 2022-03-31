@@ -1,7 +1,12 @@
+package Commands;
+
+import Tema.Command;
+import Tema.Item;
+
 import java.awt.*;
 import java.io.File;
 
-public class ViewCommand implements Command{
+public class ViewCommand implements Command {
     //open an item using native OS application
     public void execute(Item item){
         try {

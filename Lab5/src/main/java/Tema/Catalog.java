@@ -1,9 +1,5 @@
+package Tema;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.PropertyAccessor;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 

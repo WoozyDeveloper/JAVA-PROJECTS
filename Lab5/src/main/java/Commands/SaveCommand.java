@@ -1,3 +1,7 @@
+package Commands;
+
+import Tema.Catalog;
+import Tema.Command;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,7 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
 
-public class SaveCommand implements Command{
+public class SaveCommand implements Command {
     public static void execute(Catalog catalog, String path)
             throws IOException {
         try{

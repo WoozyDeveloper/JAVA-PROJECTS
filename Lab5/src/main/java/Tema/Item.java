@@ -1,6 +1,4 @@
-
-import java.util.HashMap;
-import java.util.Map;
+package Tema;
 
 public abstract class Item implements Serializable{
     private String id;

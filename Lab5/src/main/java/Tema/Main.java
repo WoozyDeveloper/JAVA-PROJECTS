@@ -1,3 +1,6 @@
+package Tema;
+
+import Commands.*;
 import freemarker.template.TemplateException;
 import org.apache.tika.exception.TikaException;
 import org.xml.sax.SAXException;
@@ -24,7 +27,7 @@ public class Main {
 
         Book i3 = new Book("3","CCC","aici","Cineva");
         addCommand.execute(c,i3);
-        //saveCommand.execute(c,"C:\\Users\\adiio\\Desktop");
+        saveCommand.execute(c,"C:\\Users\\adiio\\Desktop");
         reportCommand.execute(c);
         System.out.println("METAAAA");
         infoCommand.execute(i2);
