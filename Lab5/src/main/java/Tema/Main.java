@@ -10,50 +10,55 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws TemplateException, IOException, TikaException, SAXException {
-        AddCommand addCommand = new AddCommand();
-        ListCommand listCommand = new ListCommand();
-        ReportCommand reportCommand = new ReportCommand();
-        ViewCommand viewCommand = new ViewCommand();
-        SaveCommand saveCommand = new SaveCommand();
-        LoadCommand loadCommand = new LoadCommand();
-        InfoCommand infoCommand = new InfoCommand();
-
         Catalog c = new Catalog();
+//        ListCommand listCommand = new ListCommand();
+//        ViewCommand viewCommand = new ViewCommand();
+//
+//        LoadCommand loadCommand = new LoadCommand();
+//        InfoCommand infoCommand = new InfoCommand();
         Book i1 = new Book("1","ABC","https://","Gigel");
         try {
-            addCommand.execute(c, i1);
+            AddCommand addCommand = new AddCommand(c,i1);
+            addCommand.execute();
         }catch(Exception e){
             e.printStackTrace();
         }
 
         Notebook i2 = new Notebook("2","B","d:/","Altcineva");
         try {
-            addCommand.execute(c, i2);
+            AddCommand addCommand = new AddCommand(c,i2);
+            addCommand.execute();
         }catch(Exception e){
             e.printStackTrace();
         }
 
         Book i3 = new Book("3","CCC","aici","Cineva");
         try {
-            addCommand.execute(c, i3);
+            AddCommand addCommand = new AddCommand(c,i3);
+            addCommand.execute();
         }catch(Exception e){
             e.printStackTrace();
         }
 
         try {
-            addCommand.execute(c, i3);
+            AddCommand addCommand = new AddCommand(c,i3);
+            addCommand.execute();
         }catch(Exception e){
             e.printStackTrace();
         }
 
         try {
-            listCommand.execute(c);
+            ListCommand listCommand = new ListCommand(c);
+            listCommand.execute();
         }catch (Exception e){
             e.printStackTrace();
         }
-        saveCommand.execute(c,"C:\\Users\\adiio\\Desktop");
-        reportCommand.execute(c);
+        SaveCommand saveCommand = new SaveCommand(c,"C:\\Users\\adiio\\Desktop");
+        saveCommand.execute();
+        ReportCommand reportCommand = new ReportCommand(c);
+        reportCommand.execute();
         System.out.println("METAAAA");
-        infoCommand.execute(i2);
+        InfoCommand infoCommand = new InfoCommand(i2);
+        infoCommand.execute();
     }
 }

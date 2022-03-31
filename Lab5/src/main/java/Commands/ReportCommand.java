@@ -2,6 +2,7 @@ package Commands;
 
 import Tema.Catalog;
 import Tema.Command;
+import Tema.Item;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -13,8 +14,14 @@ import java.util.Map;
 
 public class ReportCommand implements Command {
 
+    private Catalog c;
+
+    public ReportCommand(Catalog c){
+        this.c=c;
+    }
+
     //creates and opens an HTML report representing the content of the catalog
-    public void execute(Catalog c) throws IOException, TemplateException {
+    public void execute(/*Catalog c*/) throws IOException, TemplateException {
         String catalogInfo = c.toString();
         Configuration config = new Configuration();
         config.setClassForTemplateLoading(Catalog.class,"/");

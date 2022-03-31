@@ -1,5 +1,6 @@
 package Commands;
 
+import Tema.Catalog;
 import Tema.Item;
 import org.apache.tika.Tika;
 import org.apache.tika.exception.TikaException;
@@ -26,6 +27,13 @@ import org.apache.tika.sax.BodyContentHandler;
 import org.xml.sax.SAXException;
 
 public class InfoCommand {
+    private Catalog c;
+    private Item item;
+
+    public InfoCommand(Item item){
+        this.item=item;
+    }
+
     public static String extractContentUsingFacade(InputStream stream)
             throws IOException, TikaException {
 
@@ -42,7 +50,7 @@ public class InfoCommand {
         return metadata;
     }
 
-    public void execute(Item c) throws TikaException, IOException, SAXException {
+    public void execute() throws TikaException, IOException, SAXException {
         //detecting the file type
         BodyContentHandler handler = new BodyContentHandler();
         Metadata metadata = new Metadata();
