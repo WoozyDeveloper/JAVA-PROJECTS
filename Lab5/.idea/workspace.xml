@@ -41,9 +41,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="copyright" />
   </component>
   <component name="RecentsManager">
@@ -78,7 +78,8 @@
       <workItem from="1648244862095" duration="1549000" />
       <workItem from="1648401890637" duration="58000" />
       <workItem from="1648580224835" duration="3462000" />
-      <workItem from="1648646251282" duration="17780000" />
+      <workItem from="1648646251282" duration="18382000" />
+      <workItem from="1648710036661" duration="669000" />
     </task>
     <servers />
   </component>
