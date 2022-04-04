@@ -12,14 +12,17 @@ import java.util.stream.IntStream;
 
 public class DrawingPanel extends JPanel {
     Graphics2D graphics2D;
-    private final MainFrame frame;
+    final int BLUE = 3;
+    final int RED = 2;
+    private MainFrame frame;
+    protected int turn;
     int rows, cols;
     int canvasWidth = 800, canvasHeight = 800;
     int boardWidth, boardHeight;
     int cellWidth, cellHeight;
     int padX, padY;
     int stoneSize = 20;
-    int[][] board;
+    protected int[][] board;
     ArrayList<Intersection> intersections = new ArrayList<>();
 
     public void printIntersections(){
@@ -28,6 +31,7 @@ public class DrawingPanel extends JPanel {
         }
     }
 
+    public DrawingPanel(){}
     public DrawingPanel(MainFrame frame) {
         this.frame = frame;
         board = new int[100][100];
@@ -51,12 +55,10 @@ public class DrawingPanel extends JPanel {
         for(int i = 0; i < rows; i++)
             for(int j = 0; j < cols; j++)
                 board[i][j] = 0;
-
         graphics2D.setColor(Color.BLACK);
         graphics2D.setStroke(new BasicStroke(5));
         double prob = 0.7;
         Random rand = new Random();
-        printBoard();
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
                 for (int dx = 0; dx <= 1; dx++) {
@@ -75,7 +77,7 @@ public class DrawingPanel extends JPanel {
                                 int matrixLine2 = (y2 - padY) / cellHeight;
                                 int matrixCol2 = (x2 - padX) / cellWidth;
 
-                                System.out.println(matrixLine1 + " " + matrixCol1 + " -> " + matrixLine2 + " " + matrixCol2);
+                                //System.out.println(matrixLine1 + " " + matrixCol1 + " -> " + matrixLine2 + " " + matrixCol2);
                                 this.board[matrixLine1][matrixCol1] = 1;
                                 this.board[matrixLine2][matrixCol2] = 1;
                                 graphics2D.drawLine(x1, y1, x2, y2);
@@ -85,10 +87,12 @@ public class DrawingPanel extends JPanel {
                 }
             }
         }
-        printBoard();
+
+        //printBoard();
     }
 
     final void init(int rows, int cols) {
+        turn = BLUE;
         this.rows = rows;
         this.cols = cols;
         this.padX = stoneSize + 10;
@@ -112,40 +116,23 @@ public class DrawingPanel extends JPanel {
     }
 
     private void paintStones(){
-        frame.addMouseListener(new MouseListener() {
+        frame.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                boolean result = false;
-                for(Intersection intersection : intersections) {
-                    result = intersection.checkClickedPosition(e.getX(),e.getY());
-                    if(result == true)
-                        break;
+                if(e.getClickCount() == 1) {
+                    boolean result = false;
+                    for (Intersection intersection : intersections) {
+                        result = intersection.checkClickedPosition(e.getX(), e.getY());
+                        if (result == true)
+                            break;
+                    }
+
+                    if (result == true) {
+                        printBoard();
+                    }
+
                 }
-                if(result == true)
-                    printIntersections();
             }
-
-            //region other
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-            //endregion
         });
     }
 
@@ -173,7 +160,7 @@ public class DrawingPanel extends JPanel {
                 int x = padX + col * cellWidth;
                 int y = padY + row * cellHeight;
                 graphics2D.setColor(Color.LIGHT_GRAY);
-                Intersection intersection = new Intersection(graphics2D, frame,x - stoneSize / 2, y - stoneSize / 2);
+                Intersection intersection = new Intersection(graphics2D, frame.canvas,x - stoneSize / 2, y - stoneSize / 2);
                 intersections.add(intersection);
             }
         }

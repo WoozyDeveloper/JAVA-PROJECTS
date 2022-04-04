@@ -1,15 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Intersection extends DrawingPanel{
+public class Intersection{
+
     int oxPos,oyPos,dim;
-    int oxIndex,oyIndex;
-    JButton button;
     Graphics2D graphics2D;
-    MainFrame frame;
-    public Intersection(Graphics2D graphics2D, MainFrame mainFrame, int ox, int oy){
-        super(mainFrame);
-        this.frame = mainFrame;
+    DrawingPanel drawingPanel;
+    public Intersection(Graphics2D graphics2D, DrawingPanel drawingPanel, int ox, int oy){
+        this.drawingPanel = drawingPanel;
         this.graphics2D=graphics2D;
         this.dim=20;
         graphics2D.drawOval(ox, oy, this.dim, this.dim);
@@ -17,20 +15,32 @@ public class Intersection extends DrawingPanel{
         this.oyPos=oy + dim / 2;
     }
 
-    public void drawMove() {
-        Graphics g = frame.getGraphics();
-        g.drawOval(oxPos - (this.dim - 10)/2, oyPos + 60, this.dim + 5, this.dim + 5);
-        g.setColor(Color.BLUE);
-        g.fillOval(oxPos - (this.dim - 10)/2, oyPos + 60, this.dim + 5, this.dim + 5);
-    }
-
     public boolean checkClickedPosition(int ox, int oy){
-        System.out.println("MOUSE: " + ox + " " + oy);
-        oy-=60;
-        if(ox >=oxPos && ox <= oxPos + dim && oy >=oyPos && oy <= oyPos + dim){
-            drawMove();
-            repaint();
-            return true;
+        //System.out.println("MOUSE: " + ox + " " + oy);
+        drawingPanel.printBoard();
+        int matrixLine = (oy - drawingPanel.padY) / drawingPanel.cellHeight;
+        int matrixCol = (ox - drawingPanel.padX) / drawingPanel.cellWidth;
+        if(drawingPanel.board[matrixLine][matrixCol] == 1) {
+            if (ox >= oxPos && ox <= oxPos + dim && oy - 60 >= oyPos && oy - 60 <= oyPos + dim) {
+                Graphics g = drawingPanel.getGraphics();
+                g.drawOval(oxPos - (this.dim) / 2, oyPos - (this.dim) / 2, this.dim + 5, this.dim + 5);
+                if (drawingPanel.turn == drawingPanel.BLUE) {
+                    System.out.println("SCHIMB PE " + matrixLine + " si " + matrixCol + " cu " + drawingPanel.BLUE);
+                    drawingPanel.board[matrixLine][matrixCol] = drawingPanel.BLUE;
+                    g.setColor(Color.BLUE);
+                    g.fillOval(oxPos - (this.dim) / 2, oyPos - (this.dim) / 2, this.dim + 5, this.dim + 5);
+                    System.out.println("BLUE");
+                    drawingPanel.turn = drawingPanel.RED;
+                } else if(drawingPanel.turn == drawingPanel.RED){
+                    System.out.println("SCHIMB PE " + matrixLine + " si " + matrixCol + " cu " + drawingPanel.RED);
+                    drawingPanel.board[matrixLine][matrixCol] = drawingPanel.RED;
+                    g.setColor(Color.RED);
+                    g.fillOval(oxPos - (this.dim) / 2, oyPos - (this.dim) / 2, this.dim + 5, this.dim + 5);
+                    System.out.println("RED");
+                    drawingPanel.turn = drawingPanel.BLUE;
+                }
+                return true;
+            }
         }
         return false;
     }
