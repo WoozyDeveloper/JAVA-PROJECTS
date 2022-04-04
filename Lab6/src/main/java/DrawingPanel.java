@@ -7,6 +7,7 @@ import java.awt.event.MouseMotionAdapter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
 public class DrawingPanel extends JPanel {
@@ -21,6 +22,12 @@ public class DrawingPanel extends JPanel {
     int[][] board;
     ArrayList<Intersection> intersections = new ArrayList<>();
 
+    public void printIntersections(){
+        for(Intersection intersection : intersections){
+            System.out.print(intersection + " ");
+        }
+    }
+
     public DrawingPanel(MainFrame frame) {
         this.frame = frame;
         board = new int[100][100];
@@ -28,11 +35,7 @@ public class DrawingPanel extends JPanel {
             for(int j=0;j<cols;j++)
                 board[i][j] = 0;
         init(frame.configPanel.getRows(), frame.configPanel.getCols());
-        frame.addMouseListener( new MouseAdapter() {
-            public void mouseClicked(MouseEvent e){
-                System.out.println( "X: " + e.getX() + " Y: " + e.getY() );
-            }
-        } );
+
     }
 
     public void printBoard(){
@@ -97,11 +100,6 @@ public class DrawingPanel extends JPanel {
         setPreferredSize(new Dimension(canvasWidth, canvasHeight));
     }
 
-    public void mouseClicked(MouseEvent e) {
-        int x=e.getX();
-        int y=e.getY();
-        System.out.println(x+","+y);//these co-ords are relative to the component
-    }
 
     @Override
     protected void paintComponent(Graphics graphics) {
@@ -110,7 +108,45 @@ public class DrawingPanel extends JPanel {
         graphics2D.fillRect(0, 0, canvasWidth, canvasHeight);
         paintGrid();
         buildRandomLines();
-        //paintStones(g);
+        paintStones();
+    }
+
+    private void paintStones(){
+        frame.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                boolean result = false;
+                for(Intersection intersection : intersections) {
+                    result = intersection.checkClickedPosition(e.getX(),e.getY());
+                    if(result == true)
+                        break;
+                }
+                if(result == true)
+                    printIntersections();
+            }
+
+            //region other
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+            //endregion
+        });
     }
 
     private void paintGrid() {
