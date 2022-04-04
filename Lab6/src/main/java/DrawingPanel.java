@@ -1,5 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.IntStream;
@@ -14,6 +19,7 @@ public class DrawingPanel extends JPanel {
     int padX, padY;
     int stoneSize = 20;
     int[][] board;
+    ArrayList<Intersection> intersections = new ArrayList<>();
 
     public DrawingPanel(MainFrame frame) {
         this.frame = frame;
@@ -22,6 +28,11 @@ public class DrawingPanel extends JPanel {
             for(int j=0;j<cols;j++)
                 board[i][j] = 0;
         init(frame.configPanel.getRows(), frame.configPanel.getCols());
+        frame.addMouseListener( new MouseAdapter() {
+            public void mouseClicked(MouseEvent e){
+                System.out.println( "X: " + e.getX() + " Y: " + e.getY() );
+            }
+        } );
     }
 
     public void printBoard(){
@@ -34,8 +45,8 @@ public class DrawingPanel extends JPanel {
     }
 
     private void buildRandomLines () {
-        for(int i=0;i<rows;i++)
-            for(int j=0;j<cols;j++)
+        for(int i = 0; i < rows; i++)
+            for(int j = 0; j < cols; j++)
                 board[i][j] = 0;
 
         graphics2D.setColor(Color.BLACK);
@@ -65,7 +76,6 @@ public class DrawingPanel extends JPanel {
                                 this.board[matrixLine1][matrixCol1] = 1;
                                 this.board[matrixLine2][matrixCol2] = 1;
                                 graphics2D.drawLine(x1, y1, x2, y2);
-                                index++;
                             }
                         }
                     }
@@ -85,6 +95,12 @@ public class DrawingPanel extends JPanel {
         this.boardWidth = (cols - 1) * cellWidth;
         this.boardHeight = (rows - 1) * cellHeight;
         setPreferredSize(new Dimension(canvasWidth, canvasHeight));
+    }
+
+    public void mouseClicked(MouseEvent e) {
+        int x=e.getX();
+        int y=e.getY();
+        System.out.println(x+","+y);//these co-ords are relative to the component
     }
 
     @Override
@@ -121,7 +137,8 @@ public class DrawingPanel extends JPanel {
                 int x = padX + col * cellWidth;
                 int y = padY + row * cellHeight;
                 graphics2D.setColor(Color.LIGHT_GRAY);
-                graphics2D.drawOval(x - stoneSize / 2, y - stoneSize / 2, stoneSize, stoneSize);
+                Intersection intersection = new Intersection(graphics2D, frame,x - stoneSize / 2, y - stoneSize / 2);
+                intersections.add(intersection);
             }
         }
     }
