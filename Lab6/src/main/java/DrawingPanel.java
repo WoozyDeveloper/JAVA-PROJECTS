@@ -18,6 +18,9 @@ public class DrawingPanel extends JPanel {
     public DrawingPanel(MainFrame frame) {
         this.frame = frame;
         board = new int[100][100];
+        for(int i=0;i<rows;i++)
+            for(int j=0;j<cols;j++)
+                board[i][j] = 0;
         init(frame.configPanel.getRows(), frame.configPanel.getCols());
     }
 
@@ -31,35 +34,48 @@ public class DrawingPanel extends JPanel {
     }
 
     private void buildRandomLines () {
+        for(int i=0;i<rows;i++)
+            for(int j=0;j<cols;j++)
+                board[i][j] = 0;
+
         graphics2D.setColor(Color.BLACK);
         graphics2D.setStroke(new BasicStroke(5));
         double prob = 0.7;
         Random rand = new Random();
-        for (int row = 0 ; row < rows ; row++) {
-            for (int col = 0 ; col < cols ; col++) {
-                for (int dx = 0 ; dx <= 1; dx++) {
-                    for (int dy = 0 ; dy <= 1 ; dy++) {
+        printBoard();
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                for (int dx = 0; dx <= 1; dx++) {
+                    for (int dy = 0; dy <= 1; dy++) {
                         if( (dx == dy) || (row + dy >= rows) || (col + dx >= cols) ) {
                             continue;
                         }
-                        if ( rand.nextDouble() < prob ) {
+                        else if ( rand.nextDouble() < prob ) {
                             int x1 = padX + col * cellWidth;
                             int y1 = padY + row * cellHeight;
                             int x2 = x1 + dx * cellWidth;
                             int y2 = y1 + dy * cellHeight;
-                            graphics2D.drawLine(x1, y1, x2, y2);
-                            board[x1][y1]=board[x2][y2]=1;
+                            if(dx + dy !=0) {
+                                int matrixLine1 = (y1 - padY) / cellHeight;
+                                int matrixCol1 = (x1 - padX) / cellWidth;
+                                int matrixLine2 = (y2 - padY) / cellHeight;
+                                int matrixCol2 = (x2 - padX) / cellWidth;
+
+                                System.out.println(matrixLine1 + " " + matrixCol1 + " -> " + matrixLine2 + " " + matrixCol2);
+                                this.board[matrixLine1][matrixCol1] = 1;
+                                this.board[matrixLine2][matrixCol2] = 1;
+                                graphics2D.drawLine(x1, y1, x2, y2);
+                                index++;
+                            }
                         }
                     }
                 }
             }
         }
+        printBoard();
     }
 
     final void init(int rows, int cols) {
-        for(int i=0;i<rows;i++)
-            for(int j=0;j<cols;j++)
-                board[i][j]=0;
         this.rows = rows;
         this.cols = cols;
         this.padX = stoneSize + 10;
@@ -69,7 +85,6 @@ public class DrawingPanel extends JPanel {
         this.boardWidth = (cols - 1) * cellWidth;
         this.boardHeight = (rows - 1) * cellHeight;
         setPreferredSize(new Dimension(canvasWidth, canvasHeight));
-        printBoard();
     }
 
     @Override
@@ -78,7 +93,7 @@ public class DrawingPanel extends JPanel {
         graphics2D.setColor(Color.WHITE);
         graphics2D.fillRect(0, 0, canvasWidth, canvasHeight);
         paintGrid();
-        //paintSticks(g);
+        buildRandomLines();
         //paintStones(g);
     }
 
@@ -97,10 +112,9 @@ public class DrawingPanel extends JPanel {
             int x1 = padX + col * cellWidth;
             int y1 = padY;
             int x2 = x1;
-            int y2 = padX + boardWidth;
+            int y2 = padX + boardHeight;
             graphics2D.drawLine(x1, y1, x2, y2);
         }
-        //vertical lines TODO
         //intersections
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
@@ -110,6 +124,5 @@ public class DrawingPanel extends JPanel {
                 graphics2D.drawOval(x - stoneSize / 2, y - stoneSize / 2, stoneSize, stoneSize);
             }
         }
-        buildRandomLines();
     }
 }
