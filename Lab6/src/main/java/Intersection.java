@@ -53,15 +53,6 @@ public class Intersection{
         return true;
     }
 
-    public void playerWon(){
-        int height = drawingPanel.canvasHeight;
-        int width = drawingPanel.canvasWidth;
-
-        for(int rad = 0; rad <= height; rad+=1){
-            this.graphics2D.drawOval(width/2,height/2,rad,rad);
-            this.graphics2D.fillOval(width/2,height/2,rad,rad);
-        }
-    }
 
     public boolean checkClickedPosition(int ox, int oy){
         //System.out.println("MOUSE: " + ox + " " + oy);
@@ -119,12 +110,12 @@ public class Intersection{
                     if(drawingPanel.turn == drawingPanel.RED){
                         System.out.println("BLUE WON");
                         graphics2D.setColor(Color.BLUE);
-                        playerWon();
+                        drawingPanel.playerWon = true;
                     }
                     if(drawingPanel.turn == drawingPanel.BLUE){
                         System.out.println("RED WON");
                         graphics2D.setColor(Color.RED);
-                        playerWon();
+                        drawingPanel.playerWon = true;
                     }
                 }
                 printStatusReachableIntersections();

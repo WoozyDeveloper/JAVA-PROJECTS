@@ -12,6 +12,7 @@ import java.util.stream.IntStream;
 
 public class DrawingPanel extends JPanel {
     Graphics2D graphics2D;
+    boolean playerWon = false;
     boolean firstMove = true;
     boolean checked = false;
     final int BLUE = 3;
@@ -116,9 +117,22 @@ public class DrawingPanel extends JPanel {
         setPreferredSize(new Dimension(canvasWidth, canvasHeight));
     }
 
+    public void playerWon(){
+        int height = canvasHeight;
+        int width = canvasWidth;
+
+        for(int rad = 0; rad <= height; rad+=1){
+            this.graphics2D.drawOval(width/2,height/2,rad,rad);
+            this.graphics2D.fillOval(width/2,height/2,rad,rad);
+        }
+    }
 
     @Override
     protected void paintComponent(Graphics graphics) {
+        if(playerWon == true){
+            System.out.println("Am intrat in player won");
+            playerWon();
+        }
         graphics2D = (Graphics2D) graphics;
         graphics2D.setColor(Color.WHITE);
         graphics2D.fillRect(0, 0, canvasWidth, canvasHeight);
@@ -139,10 +153,6 @@ public class DrawingPanel extends JPanel {
         System.out.println("REACHABLE");
         System.out.println(intersections.size());
 
-                for(Intersection intersection : intersections) {
-                    intersection.printReachableIntersections();
-                    break;
-                }
         System.out.println();
     }
 
@@ -157,9 +167,6 @@ public class DrawingPanel extends JPanel {
                         if (result == true)
                             break;
                     }
-
-                    //if (result == true)
-                        //printBoard();
                 }
             }
         });
