@@ -81,6 +81,7 @@ public class DrawingPanel extends JPanel {
                                 this.board[matrixLine1][matrixCol1] = 1;
                                 this.board[matrixLine2][matrixCol2] = 1;
                                 graphics2D.drawLine(x1, y1, x2, y2);
+
                             }
                         }
                     }
@@ -111,8 +112,8 @@ public class DrawingPanel extends JPanel {
         graphics2D.setColor(Color.WHITE);
         graphics2D.fillRect(0, 0, canvasWidth, canvasHeight);
         paintGrid();
-        buildRandomLines();
         paintStones();
+        buildRandomLines();
     }
 
     private void paintStones(){
@@ -127,10 +128,8 @@ public class DrawingPanel extends JPanel {
                             break;
                     }
 
-                    if (result == true) {
+                    if (result == true)
                         printBoard();
-                    }
-
                 }
             }
         });
@@ -151,7 +150,7 @@ public class DrawingPanel extends JPanel {
             int x1 = padX + col * cellWidth;
             int y1 = padY;
             int x2 = x1;
-            int y2 = padX + boardHeight;
+            int y2 = padY + boardHeight;
             graphics2D.drawLine(x1, y1, x2, y2);
         }
         //intersections

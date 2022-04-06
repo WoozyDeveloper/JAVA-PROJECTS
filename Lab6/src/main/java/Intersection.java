@@ -1,8 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Intersection{
-
+    ArrayList<Intersection> reachableIntersections = new ArrayList<>();
     int oxPos,oyPos,dim;
     Graphics2D graphics2D;
     DrawingPanel drawingPanel;
@@ -13,6 +14,30 @@ public class Intersection{
         graphics2D.drawOval(ox, oy, this.dim, this.dim);
         this.oxPos=ox + dim / 2;
         this.oyPos=oy + dim / 2;
+    }
+
+    public boolean checkForPossibleMoves(){
+        //region CURRENT
+        int currentOX = this.oxPos;
+        int currentOY = this.oyPos;
+        //endregion
+        //region UP
+        int upOX = this.oxPos;
+        int upOY = this.oyPos - drawingPanel.cellHeight;
+        //endregion
+        //region RIGHT
+        int rightOX = this.oxPos + drawingPanel.cellWidth;
+        int rightOY = this.oyPos;
+        //endregion
+        //region LEFT
+        int leftOX = this.oxPos - drawingPanel.cellWidth;
+        int leftOY = this.oyPos;
+        //endregion
+        //region DOWN
+        int downOX = this.oxPos;
+        int downOY = this.oyPos + drawingPanel.cellHeight;
+        //endregion
+        return true;
     }
 
     public boolean checkClickedPosition(int ox, int oy){
@@ -43,12 +68,6 @@ public class Intersection{
             }
         }
         return false;
-    }
-
-    public void changeColor(){
-        graphics2D.setColor(Color.BLUE);
-        graphics2D.drawOval(oxPos, oyPos, this.dim + 5, this.dim + 5);
-        graphics2D.fillOval(this.oxPos + dim/2, this.oyPos + dim/2, this.dim + 5, this.dim + 5);
     }
 
     @Override
