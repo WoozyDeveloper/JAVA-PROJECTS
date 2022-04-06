@@ -50,6 +50,11 @@ public class ConfigPanel extends JPanel {
         add(createButton);
     }
     private void createGame (ActionEvent e) {
+        System.out.println("DELETE");
+        for(Intersection intersection : frame.canvas.intersections)
+            intersection.reachableIntersections.clear();
+        for(Intersection intersection : frame.canvas.intersections)
+            intersection.printReachableIntersections();
         frame.dispose();
         new MainFrame(this.oxGridValue,this.oyGridValue).setVisible(true);
     }

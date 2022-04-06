@@ -12,6 +12,8 @@ import java.util.stream.IntStream;
 
 public class DrawingPanel extends JPanel {
     Graphics2D graphics2D;
+    boolean firstMove = true;
+    boolean checked = false;
     final int BLUE = 3;
     final int RED = 2;
     private MainFrame frame;
@@ -55,7 +57,7 @@ public class DrawingPanel extends JPanel {
         for(int i = 0; i < rows; i++)
             for(int j = 0; j < cols; j++)
                 board[i][j] = 0;
-        graphics2D.setColor(Color.BLACK);
+        graphics2D.setColor(Color.BLUE);
         graphics2D.setStroke(new BasicStroke(5));
         double prob = 0.7;
         Random rand = new Random();
@@ -71,7 +73,7 @@ public class DrawingPanel extends JPanel {
                             int y1 = padY + row * cellHeight;
                             int x2 = x1 + dx * cellWidth;
                             int y2 = y1 + dy * cellHeight;
-                            if(dx + dy !=0) {
+                            if(dx + dy == 1) {
                                 int matrixLine1 = (y1 - padY) / cellHeight;
                                 int matrixCol1 = (x1 - padX) / cellWidth;
                                 int matrixLine2 = (y2 - padY) / cellHeight;
@@ -81,7 +83,16 @@ public class DrawingPanel extends JPanel {
                                 this.board[matrixLine1][matrixCol1] = 1;
                                 this.board[matrixLine2][matrixCol2] = 1;
                                 graphics2D.drawLine(x1, y1, x2, y2);
-
+                                for(Intersection intersection1 : intersections) {
+                                    for (Intersection intersection2 : intersections) {
+                                        if (intersection1.oxPos == x1 && intersection1.oyPos == y1 &&
+                                                intersection2.oxPos == x2 && intersection2.oyPos == y2) {
+                                            System.out.print("1");
+                                            intersection1.reachableIntersections.add(intersection2);
+                                            intersection2.reachableIntersections.add(intersection1);
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -114,6 +125,25 @@ public class DrawingPanel extends JPanel {
         paintGrid();
         paintStones();
         buildRandomLines();
+        if(checked == false){
+            for (int row = 0; row < rows; row++) {
+                for (int col = 0; col < cols; col++) {
+                    int x = padX + col * cellWidth;
+                    int y = padY + row * cellHeight;
+                    Intersection intersection = new Intersection(graphics2D, frame.canvas,x - stoneSize / 2, y - stoneSize / 2);
+                    intersections.add(intersection);
+                }
+            }
+            checked = true;
+        }
+        System.out.println("REACHABLE");
+        System.out.println(intersections.size());
+
+                for(Intersection intersection : intersections) {
+                    intersection.printReachableIntersections();
+                    break;
+                }
+        System.out.println();
     }
 
     private void paintStones(){
@@ -128,8 +158,8 @@ public class DrawingPanel extends JPanel {
                             break;
                     }
 
-                    if (result == true)
-                        printBoard();
+                    //if (result == true)
+                        //printBoard();
                 }
             }
         });
@@ -154,13 +184,13 @@ public class DrawingPanel extends JPanel {
             graphics2D.drawLine(x1, y1, x2, y2);
         }
         //intersections
+        System.out.println(rows + " " + cols );
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
                 int x = padX + col * cellWidth;
                 int y = padY + row * cellHeight;
                 graphics2D.setColor(Color.LIGHT_GRAY);
-                Intersection intersection = new Intersection(graphics2D, frame.canvas,x - stoneSize / 2, y - stoneSize / 2);
-                intersections.add(intersection);
+                graphics2D.drawOval(x - stoneSize/2, y - stoneSize/2, stoneSize, stoneSize);
             }
         }
     }

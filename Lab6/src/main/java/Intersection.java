@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Intersection{
     ArrayList<Intersection> reachableIntersections = new ArrayList<>();
+    boolean occupied = false;
+    int color = 0;
     int oxPos,oyPos,dim;
     Graphics2D graphics2D;
     DrawingPanel drawingPanel;
@@ -11,9 +13,20 @@ public class Intersection{
         this.drawingPanel = drawingPanel;
         this.graphics2D=graphics2D;
         this.dim=20;
-        graphics2D.drawOval(ox, oy, this.dim, this.dim);
         this.oxPos=ox + dim / 2;
         this.oyPos=oy + dim / 2;
+    }
+
+    public void printReachableIntersections(){
+        for(Intersection intersection : reachableIntersections)
+            System.out.print(intersection + " ");
+    }
+
+    public void printStatusReachableIntersections(){
+        System.out.println("STATUS");
+        for(Intersection intersection : reachableIntersections)
+            System.out.print(intersection.occupied + " ");
+        System.out.println();
     }
 
     public boolean checkForPossibleMoves(){
@@ -40,30 +53,81 @@ public class Intersection{
         return true;
     }
 
+    public void playerWon(){
+        int height = drawingPanel.canvasHeight;
+        int width = drawingPanel.canvasWidth;
+
+        for(int rad = 0; rad <= height; rad+=1){
+            this.graphics2D.drawOval(width/2,height/2,rad,rad);
+            this.graphics2D.fillOval(width/2,height/2,rad,rad);
+        }
+    }
+
     public boolean checkClickedPosition(int ox, int oy){
         //System.out.println("MOUSE: " + ox + " " + oy);
-        drawingPanel.printBoard();
+        //drawingPanel.printBoard();
         int matrixLine = (oy - drawingPanel.padY) / drawingPanel.cellHeight;
         int matrixCol = (ox - drawingPanel.padX) / drawingPanel.cellWidth;
         if(drawingPanel.board[matrixLine][matrixCol] == 1) {
             if (ox >= oxPos && ox <= oxPos + dim && oy - 60 >= oyPos && oy - 60 <= oyPos + dim) {
                 Graphics g = drawingPanel.getGraphics();
-                g.drawOval(oxPos - (this.dim) / 2, oyPos - (this.dim) / 2, this.dim + 5, this.dim + 5);
                 if (drawingPanel.turn == drawingPanel.BLUE) {
-                    System.out.println("SCHIMB PE " + matrixLine + " si " + matrixCol + " cu " + drawingPanel.BLUE);
-                    drawingPanel.board[matrixLine][matrixCol] = drawingPanel.BLUE;
-                    g.setColor(Color.BLUE);
-                    g.fillOval(oxPos - (this.dim) / 2, oyPos - (this.dim) / 2, this.dim + 5, this.dim + 5);
-                    System.out.println("BLUE");
-                    drawingPanel.turn = drawingPanel.RED;
+                    boolean search = false;
+                    for(Intersection intersection : reachableIntersections){
+                        if(intersection.color == drawingPanel.RED)
+                            search = true;
+                    }
+                    if((search == true || drawingPanel.firstMove == true) && occupied == false) {
+                        occupied = true;
+                        g.drawOval(oxPos - (this.dim) / 2, oyPos - (this.dim) / 2, this.dim + 5, this.dim + 5);
+                        drawingPanel.firstMove = false;
+                        color = drawingPanel.BLUE;
+                        System.out.println("SCHIMB PE " + matrixLine + " si " + matrixCol + " cu " + drawingPanel.BLUE);
+                        drawingPanel.board[matrixLine][matrixCol] = drawingPanel.BLUE;
+                        g.setColor(Color.BLUE);
+                        g.fillOval(oxPos - (this.dim) / 2, oyPos - (this.dim) / 2, this.dim + 5, this.dim + 5);
+                        System.out.println("BLUE");
+                        drawingPanel.turn = drawingPanel.RED;
+
+                    }
                 } else if(drawingPanel.turn == drawingPanel.RED){
-                    System.out.println("SCHIMB PE " + matrixLine + " si " + matrixCol + " cu " + drawingPanel.RED);
-                    drawingPanel.board[matrixLine][matrixCol] = drawingPanel.RED;
-                    g.setColor(Color.RED);
-                    g.fillOval(oxPos - (this.dim) / 2, oyPos - (this.dim) / 2, this.dim + 5, this.dim + 5);
-                    System.out.println("RED");
-                    drawingPanel.turn = drawingPanel.BLUE;
+                    boolean search = false;
+                    for(Intersection intersection : reachableIntersections){
+                        if(intersection.color == drawingPanel.BLUE)
+                            search = true;
+                    }
+
+                    if((search == true || drawingPanel.firstMove == true) && occupied == false) {
+                        occupied = true;
+                        g.drawOval(oxPos - (this.dim) / 2, oyPos - (this.dim) / 2, this.dim + 5, this.dim + 5);
+                        drawingPanel.firstMove = false;
+                        color = drawingPanel.RED;
+                        System.out.println("SCHIMB PE " + matrixLine + " si " + matrixCol + " cu " + drawingPanel.RED);
+                        drawingPanel.board[matrixLine][matrixCol] = drawingPanel.RED;
+                        g.setColor(Color.RED);
+                        g.fillOval(oxPos - (this.dim) / 2, oyPos - (this.dim) / 2, this.dim + 5, this.dim + 5);
+                        System.out.println("RED");
+                        drawingPanel.turn = drawingPanel.BLUE;
+                    }
                 }
+                boolean search = false;
+                for(Intersection intersection : reachableIntersections){
+                    if(intersection.occupied == false)
+                        search = true;
+                }
+                if(search == false){
+                    if(drawingPanel.turn == drawingPanel.RED){
+                        System.out.println("BLUE WON");
+                        graphics2D.setColor(Color.BLUE);
+                        playerWon();
+                    }
+                    if(drawingPanel.turn == drawingPanel.BLUE){
+                        System.out.println("RED WON");
+                        graphics2D.setColor(Color.RED);
+                        playerWon();
+                    }
+                }
+                printStatusReachableIntersections();
                 return true;
             }
         }

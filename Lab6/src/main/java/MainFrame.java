@@ -10,7 +10,6 @@ public class MainFrame extends JFrame{
     ConfigPanel configPanel;
     ControlPanel controlPanel;
     DrawingPanel canvas;
-
     int oxSize,oySize;
 
 
