@@ -32,10 +32,10 @@ public class ControlPanel extends JPanel {
     }
 
     private void exportPNG(ActionEvent e){
-        BufferedImage bi = new BufferedImage(frame.getSize().width, frame.getSize().height, BufferedImage.TYPE_INT_ARGB);
-        Graphics g = bi.createGraphics();
-        frame.canvas.paint(g);
-        try{ImageIO.write(bi,"png",new File("test2.png"));}catch (Exception ex) {}
+//        BufferedImage bi = new BufferedImage(frame.getSize().width, frame.getSize().height, BufferedImage.TYPE_INT_ARGB);
+//        Graphics g = bi.createGraphics();
+//        frame.canvas.paint(g);
+//        try{ImageIO.write(bi,"png",new File("test2.png"));}catch (Exception ex) {}
 
 
     }

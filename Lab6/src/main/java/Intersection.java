@@ -79,7 +79,6 @@ public class Intersection{
                         g.fillOval(oxPos - (this.dim) / 2, oyPos - (this.dim) / 2, this.dim + 5, this.dim + 5);
                         System.out.println("BLUE");
                         drawingPanel.turn = drawingPanel.RED;
-
                     }
                 } else if(drawingPanel.turn == drawingPanel.RED){
                     boolean search = false;
@@ -110,12 +109,10 @@ public class Intersection{
                     if(drawingPanel.turn == drawingPanel.RED){
                         System.out.println("BLUE WON");
                         graphics2D.setColor(Color.BLUE);
-                        drawingPanel.playerWon = true;
                     }
                     if(drawingPanel.turn == drawingPanel.BLUE){
                         System.out.println("RED WON");
                         graphics2D.setColor(Color.RED);
-                        drawingPanel.playerWon = true;
                     }
                 }
                 printStatusReachableIntersections();

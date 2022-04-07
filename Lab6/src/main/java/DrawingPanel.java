@@ -12,7 +12,7 @@ import java.util.stream.IntStream;
 
 public class DrawingPanel extends JPanel {
     Graphics2D graphics2D;
-    boolean playerWon = false;
+    boolean winnerFound = false;
     boolean firstMove = true;
     boolean checked = false;
     final int BLUE = 3;
@@ -88,7 +88,7 @@ public class DrawingPanel extends JPanel {
                                     for (Intersection intersection2 : intersections) {
                                         if (intersection1.oxPos == x1 && intersection1.oyPos == y1 &&
                                                 intersection2.oxPos == x2 && intersection2.oyPos == y2) {
-                                            System.out.print("1");
+                                            //System.out.print("1");
                                             intersection1.reachableIntersections.add(intersection2);
                                             intersection2.reachableIntersections.add(intersection1);
                                         }
@@ -129,11 +129,11 @@ public class DrawingPanel extends JPanel {
 
     @Override
     protected void paintComponent(Graphics graphics) {
-        if(playerWon == true){
-            System.out.println("Am intrat in player won");
-            playerWon();
-        }
         graphics2D = (Graphics2D) graphics;
+        if(winnerFound == true){
+            graphics2D.setColor(Color.RED);
+            graphics2D.drawOval(150, 150, 100, 100);
+        }
         graphics2D.setColor(Color.WHITE);
         graphics2D.fillRect(0, 0, canvasWidth, canvasHeight);
         paintGrid();
