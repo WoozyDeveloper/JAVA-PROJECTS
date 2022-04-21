@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,7 +17,6 @@ public class Player implements Runnable{
     }
 
     public synchronized boolean submitWord() throws InterruptedException {
-        notify();
         done = false;
         if (extracted.isEmpty()) {
             return false;
@@ -25,6 +25,7 @@ public class Player implements Runnable{
         String word;
         Scanner scanner = new Scanner(System.in);
         word = scanner.nextLine();
+
         List <Character> letters = new ArrayList<>();
         for (int i=0;i<extracted.size();i++)
             letters.add(extracted.get(i).getLetter());
@@ -45,6 +46,23 @@ public class Player implements Runnable{
                 extracted.remove(test);
             }
         }
+        boolean wordFound = false;
+        File file = new File("src/main/resources/dictionar.txt");
+        try(BufferedReader br = new BufferedReader(new FileReader(file))) {
+            for(String line; (line = br.readLine()) != null; ) {
+                if(word == line){
+                    wordFound = true;
+                    break;
+                }
+            }
+            // line is not visible here.
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if(wordFound == false)
+            return false;
 
         List<Tile> newExtracted = game.getBag().extractTiles(word.length());
         extracted.addAll(newExtracted);
@@ -55,7 +73,6 @@ public class Player implements Runnable{
             e.printStackTrace();
         }
 
-        notify();
         done = true;
         return true;
 
