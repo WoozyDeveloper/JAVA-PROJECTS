@@ -5,7 +5,7 @@ public class Bag {
     private final int maxPoints = 10;
     private final int minPoints = 1;
     private final int a = 2;
-    private ArrayList<Tile> letters = new ArrayList<>();
+    public ArrayList<Tile> letters = new ArrayList<>();
     private Random random;
     public Bag() {
         random = new Random();
