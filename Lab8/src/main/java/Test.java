@@ -77,7 +77,7 @@ public class Test {
                         double worldMapWidth = ((mapWidth / mapLonDelta) * 360) / (2 * Math.PI);
                         double mapOffsetY = (worldMapWidth / 2 * Math.log((1 + Math.sin(mapLatBottomDegree)) / (1 - Math.sin(mapLatBottomDegree))));
 
-                        double x = (lon - mapLonLeft) * (mapWidth / mapLonDelta);
+                        double x = (lon - mapLonLeft) * (mapWidth / mapLonDelta) - 5;
                         double y = 0.1;
                         if (lat < 0) {
                             lat = lat * Math.PI / 180;
@@ -86,15 +86,11 @@ public class Test {
                             lat = lat * Math.PI / 180;
                             lat = lat * -1;
                             y = mapHeight - ((worldMapWidth / 2 * Math.log((1 + Math.sin(lat)) / (1 - Math.sin(lat)))) - mapOffsetY);
-                            System.out.println("y before minus: " + y);
+                            //System.out.println("y before minus: " + y);
                             y = mapHeight - y;
                         } else {
                             y = mapHeight / 2;
                         }
-                        System.out.println(x);
-                        System.out.println(y);
-
-
 
 
 //                        double x = (longitude + 180) * (mapWidth/360);

@@ -8,15 +8,21 @@ public class Main{
 
     public static void main(String args[]) throws SQLException {
         Database database = Database.getInstance();
+
+        ContinentDAO continentDAO = new ContinentDAO(database);
+        CityDAO cityDAO = new CityDAO(database);
+
         Connection connection = database.getConnection();
 
         System.out.println("---------All the continents---------");
-        database.showContinents();
+        continentDAO.show();
 
         System.out.println("---------Find by id=2---------");
-        database.findContinent(2);
+        continentDAO.addContinents();
+        Continent myContinent = continentDAO.findById(2);
+        System.out.println(myContinent.getName());
         System.out.println("---------Find by name='EUROPA'---------");
-        database.findContinent("EUROPA");
+        continentDAO.findByName("EUROPA");
 
 //        int lineNumber = 0;
 //        File file = new File("src/main/resources/concap.csv");
@@ -44,7 +50,7 @@ public class Main{
 //            e.printStackTrace();
 //        }
 
-        System.out.println("Distance=" + database.cityDistance("Hargeisa","Ottawa"));
+        System.out.println("Distance=" + cityDAO.cityDistance("Hargeisa","Ottawa"));
 
         new Test();
         connection.close();
