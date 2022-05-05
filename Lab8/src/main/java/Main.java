@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.io.*;
 import java.sql.*;
 public class Main{
@@ -44,6 +45,8 @@ public class Main{
 //        }
 
         System.out.println("Distance=" + database.cityDistance("Hargeisa","Ottawa"));
+
+        new Test();
         connection.close();
     }
 }  
