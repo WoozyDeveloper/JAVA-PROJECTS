@@ -30,11 +30,12 @@ public class Client {
                     System.out.println("Parola. . .");
                     String password = scanner.nextLine();
                     out.println(password);
-                    //response="";
+                    response=in.readLine();
+                    System.out.println(response);
                 }
                 if(response.equals("read")){
-                    System.out.println("am primit semnal de la read");
                     System.out.println(in.readLine());
+                    System.out.println("am primit semnal de la read");
                 }
             }
         } catch (UnknownHostException e) {

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+    <persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
+
+        <!--<provider>oracle.toplink.essentials.PersistenceProvider</provider>-->
+
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <property name="toplink.logging.level" value="INFO"/>
+            <property name="toplink.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
+            <property name="toplink.jdbc.url" value="jdbc:oracle:thin:@myhost:l521:MYSID"/>
+            <property name="toplink.jdbc.password" value="tiger"/>
+            <property name="toplink.jdbc.user" value="scott"/>
+        </properties>
+    </persistence-unit>
+</persistence>
